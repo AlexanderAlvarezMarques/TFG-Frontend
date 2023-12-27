@@ -1,4 +1,4 @@
-import UsersApi from "@/lib/api/users/api"
+import UsersApi from "@/lib/api/users/usersApi"
 
 const logIn = async (username: string, password: string) => {
     const loginData = {
@@ -17,6 +17,7 @@ const getUserDashboard = async () => {
     return await UsersApi.apiGetUserDashboard()
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     logIn,
     getUserDetailsByToken,

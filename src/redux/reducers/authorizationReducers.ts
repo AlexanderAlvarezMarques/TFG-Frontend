@@ -2,7 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     token: null,
-    refresh_token: null
+    refresh_token: null,
+    isLogged: false
 }
 
 const authorizationSlicer = createSlice( {
@@ -10,9 +11,10 @@ const authorizationSlicer = createSlice( {
     initialState,
     reducers: {
         setToken: (state, action) => {
-            const { token, refresh_token } = action.payload
-            state.token = token
-            state.refresh_token = refresh_token
+            const { token, refresh_token } = action.payload;
+            state.token = token;
+            state.refresh_token = refresh_token;
+            state.isLogged = true;
         },
         clearToken: (state) => {
             Object.assign(state, initialState)

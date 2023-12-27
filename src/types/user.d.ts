@@ -13,29 +13,33 @@ type User = {
     "nif"?: string,
 }
 
-type Book = {
+type Reserve =  {
     "id": number,
-    "status": string,
-    "locationDetails": {
+    "court": {
         "sportCenter": {
-            "id": number,
-            "name": string
-        },
-        "court": {
-            "number": number,
-            "type": string
+            "name": string,
+            "city": {
+                "name": string,
+                "province": {
+                    "name": string,
+                    "country": {
+                        "name": srting
+                    }
+                }
+            },
         }
+        "identifier": string,
+        "number": 4,
+        "type": string
     },
-    "participants": {},
     "startDate": string,
-    "startHour": string,
     "endDate": string,
-    "endHour": string
+    "status": string
 }
 
 type Match = {
     "id": number,
-    "book": {
+    "reserve": {
         "id": number,
         "status": string,
         "locationDetails": {
@@ -60,8 +64,8 @@ type Dashboard = {
         "history": [Match],
         "next": [Match]
     },
-    "books": {
-        "history": [Book],
-        "active": [Book]
+    "reserves": {
+        "history": [Reserve],
+        "active": [Reserve]
     }
 }

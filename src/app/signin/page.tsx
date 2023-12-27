@@ -1,10 +1,10 @@
 'use client'
 
 import UserService from "@/services/api/UserService";
-import {HTTP_STATUS} from "@/enums/HttpStatus";
+import { HTTP_STATUS } from "@/enums/HttpStatus";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { setToken } from "@/redux/reducers/authorizationReducers"
 
 export default function SignInPage() {
@@ -22,9 +22,10 @@ export default function SignInPage() {
         const isLogged = await UserService.logIn(username, password)
         const { status, data } = isLogged
         if (status === HTTP_STATUS.OK) {
-            dispatch(setToken(data))
             localStorage.setItem('token', data.token)
             localStorage.setItem('refresh_token', data.refresh_token)
+            dispatch(setToken(data));
+
             router.push("/dashboard")
         }
 
@@ -32,9 +33,9 @@ export default function SignInPage() {
     }
 
     return (
-        <form id="singIn" onSubmit={handleSubmit}>
+        <form id="singIn" className="form" onSubmit={handleSubmit}>
             <div className="formGroup">
-                <label htmlFor="username">Nombre de usuario o correo:</label><br/>
+                <label htmlFor="username">Nombre de usuario o correo:</label>
                 <input
                     type="text"
                     name="username"
@@ -44,7 +45,7 @@ export default function SignInPage() {
                 />
             </div>
             <div className="formGroup">
-                <label htmlFor="password">Contraseña:</label><br/>
+                <label htmlFor="password">Contraseña:</label>
                 <input
                     type="password"
                     name="password"
@@ -54,7 +55,7 @@ export default function SignInPage() {
                 />
             </div>
             <div className={`formGroup`}>
-                <input type="submit" value="Log in"/>
+                <input type="submit" className={'btn btn-primary'} value="Log in"/>
             </div>
             <div className={`formGroup ${logInError ? 'd-block' : 'd-none'}`}>
                 <label>Nombre de usuario o contraseña erroneos</label>

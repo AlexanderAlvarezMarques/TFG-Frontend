@@ -1,0 +1,66 @@
+$timeListItem: (
+  "bg-color": darkblue,
+  "color": whitesmoke,
+);
+
+.searchEngine {
+  .searchEngineForm {
+    width: 60%;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .searchButton {
+      align-self: flex-end;
+    }
+
+    .formGroup {
+      width: 15%;
+    }
+
+    // It adjust the clear button position better than the default
+    .react-datepicker__input-container {
+      width: auto;
+    }
+
+    .react-datepicker__close-icon {
+      padding: 0;
+      right: -2px;
+    }
+
+    .timePicker {
+      text-align: center;
+      width: 100%;
+    }
+
+    .timePickerPopper {
+      .react-datepicker__header {
+        display: none;
+      }
+
+      .react-datepicker__triangle {
+        margin-left: -8px;
+      }
+
+      // Overwrite list item height to center time
+      ul.react-datepicker__time-list {
+
+        // Normal item list
+        li.react-datepicker__time-list-item {
+          height: 30px;
+          line-height: 32px;
+
+          &:hover {
+            background-color: map-get($timeListItem, "bg-color");
+            color: map-get($timeListItem, "color");
+          }
+        }
+
+        // Selected item list
+        li.react-datepicker__time-list-item--selected {
+          background-color: map-get($timeListItem, "bg-color");
+          color: map-get($timeListItem, "color");
+        }
+      }
+    }
+  }
+}

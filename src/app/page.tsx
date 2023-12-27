@@ -1,4 +1,5 @@
 import {Metadata} from "next";
+import SearchReservesEngine from "@/components/Shared/SearchReservesEngine";
 
 export const metadata: Metadata = {
     title: "TFG - Home page",
@@ -9,9 +10,7 @@ export default function HomePage() {
 
     return (
         <>
-            <div className="">
-
-            </div>
+            <SearchReservesEngine page={1}/>
         </>
     );
 

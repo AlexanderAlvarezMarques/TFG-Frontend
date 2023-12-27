@@ -1,3 +1,10 @@
+// Variables
+@import "variables";
+
+// Partials
+@import 'forms';
+@import '_modals';
+
 html {
   margin: 0;
 }
@@ -8,6 +15,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
 .main {
   flex-grow: 1;
 }
@@ -19,7 +27,6 @@ body {
 .d-none {
   display: none;
 }
-
 
 .btn {
   display: inline-block;
@@ -95,6 +102,7 @@ body {
 
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
+  height: auto;
 }
 
 .card {

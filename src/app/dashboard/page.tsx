@@ -5,7 +5,7 @@ import UserService from "@/services/api/UserService";
 import {useDispatch, useSelector} from "react-redux";
 import { HTTP_STATUS } from "@/enums/HttpStatus";
 import { setUser } from "@/redux/reducers/userReducers";
-import {BookInfo, MatchInfo} from "@/partials/MatchBookInfo";
+import {ReserveInfo, MatchInfo} from "@/partials/MatchReserveInfo";
 
 export default function DashBoardPage() {
 
@@ -13,13 +13,13 @@ export default function DashBoardPage() {
     const user = useSelector((state: StorageState) => state.user)
     const [ dashboard, setDashboard ] = useState<Dashboard|null>(null);
 
-    const generateBookOrMatchContent = (a: (Match|Book)[], b: boolean) => {
+    const generateReserveOrMatchContent = (a: (Match|Reserve)[], b: boolean) => {
         return (
-            <div className={b ? 'games' : 'books'}>
-                {a.map((item: Book|Match) => (
+            <div className={b ? 'games' : 'reserves'}>
+                {a.map((item: Reserve|Match) => (
                         b
                         ? <MatchInfo key={item.id} match={item as Match} />
-                        : <BookInfo key={item.id} book={item as Book} />
+                        : <ReserveInfo key={item.id} reserve={item as Reserve} />
                 ))}
             </div>
         )
@@ -38,19 +38,19 @@ export default function DashBoardPage() {
 
     return (
         <>
-            <div className="book_and_matches">
+            <div className="reserve_and_matches">
                 {
                     dashboard ?
                         (
                             <>
                                 <h2>Partidos anteriores</h2>
-                                {generateBookOrMatchContent(dashboard.games.history, true)}
+                                {generateReserveOrMatchContent(dashboard.games.history, true)}
                                 <h2>Proximos partidos</h2>
-                                {generateBookOrMatchContent(dashboard.games.next, true)}
+                                {generateReserveOrMatchContent(dashboard.games.next, true)}
                                 <h2>Reservas anteriores</h2>
-                                {generateBookOrMatchContent(dashboard.books.history, false)}
+                                {generateReserveOrMatchContent(dashboard.reserves.history, false)}
                                 <h2>Reservas activas</h2>
-                                {generateBookOrMatchContent(dashboard.books.active, false)}
+                                {generateReserveOrMatchContent(dashboard.reserves.active, false)}
                             </>
                         ) :
                         (
