@@ -10,7 +10,7 @@ const globalAxios = axios.create({
 const refreshToken = async () => {
     const refreshToken = localStorage.getItem('refresh_token') ?? '';
     const response = axios.post(
-        '/api/users/login/refresh',
+        `${process.env.BACKEND_URL}/api/users/login/refresh`,
         {
             refresh_token: refreshToken
         }
@@ -18,7 +18,7 @@ const refreshToken = async () => {
 
     const { status, data } = await response;
     if (status === HTTP_STATUS.OK) {
-        localStorage.setItem('token', data.access_token);
+        localStorage.setItem('token', data.token);
         localStorage.setItem('refresh_token', data.refresh_token);
         return data.access_token;
     }

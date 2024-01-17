@@ -2,18 +2,16 @@
 
 // CSS
 import 'react-datepicker/dist/react-datepicker.css';
-import "@/assets/sass/search-engine.scss"
+import styles from "@/assets/sass/components/searchEngine.module.scss"
 
 // Imports
 import React, {useEffect, useState} from 'react';
 import DatePicker from 'react-datepicker';
 import {usePathname, useRouter} from "next/navigation";
 import {format} from "date-fns";
-import Select from "react-select/base";
 
 // Services
 import ReserveService from "@/services/api/ReserveService";
-import MasterService from "@/services/api/MasterService";
 
 type Props = {
     setData?: Function,
@@ -84,8 +82,8 @@ export default function SearchReservesEngine(props: Props) {
     }, []);
 
     return (
-        <div className={`searchEngine`}>
-            <form className={`form searchEngineForm`} onSubmit={handleSubmit}>
+        <div className={styles.searchEngine}>
+            <form className={`form ${styles.searchEngineForm}`} onSubmit={handleSubmit}>
                 {/* City */}
                 <div className={`formGroup`}>
                     <label htmlFor="state">Ciudad</label>
@@ -141,7 +139,7 @@ export default function SearchReservesEngine(props: Props) {
                 </div>
 
                 {/* Submit */}
-                <div className={`formGroup searchButton`}>
+                <div className={`formGroup ${styles.searchButton}`}>
                     <input type="submit" value={`${isLoading ? "..." : "Buscar"}`} className={`btn btn-primary`}/>
                 </div>
             </form>

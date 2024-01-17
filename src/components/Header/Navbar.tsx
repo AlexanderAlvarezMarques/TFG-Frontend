@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import styles from "@/assets/sass/navbar.module.scss"
+import styles from "@/assets/sass/components/navbar.module.scss";
 import {useSelector} from "react-redux";
 import store from "@/redux/store";
 

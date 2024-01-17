@@ -1,4 +1,4 @@
-import getAllSportCenters from "@/lib/api/sportCenters";
+import getAllSportCenters from "@/lib/api/sportCenter/sportCentersApi";
 import Link from "next/link";
 
 export default async function SportCentersPage() {

@@ -29,3 +29,15 @@ type SportCenter = {
         }
     ]
 }
+
+type ReserveScheduleHour = {
+    [hour: string]: {
+        [minute: string]: boolean;
+    };
+}
+
+type ReserveSchedule = {
+    id: number;
+    number: number;
+    schedule: ReserveScheduleHour[];
+};

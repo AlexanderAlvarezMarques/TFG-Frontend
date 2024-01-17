@@ -1,4 +1,4 @@
-import getAllSportCenters, {getSportCenterDetailsById} from "@/lib/api/sportCenters";
+import getAllSportCenters, {getSportCenterDetailsById} from "@/lib/api/sportCenter/sportCentersApi";
 import {notFound} from "next/navigation";
 
 type Params = {

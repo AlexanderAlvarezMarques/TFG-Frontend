@@ -9,7 +9,7 @@ const apiGetProvinces = async (isoCode: string = "esp") => globalAxios.get(
 );
 
 const apiGetCities = async (province: string = "") => globalAxios.get(
-    `/master/cities?order[name]=asc&province.name=${province}`
+    `/master/cities?order[name]=asc&province.name=${province}&sportCenters`
 );
 
 const apiGetSports = async () => globalAxios.get(

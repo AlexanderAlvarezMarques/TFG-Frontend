@@ -10,6 +10,7 @@ const nextConfig = {
     },
     env: {
         BACKEND_URL: "http://localhost:9001"
+        // BACKEND_URL: "http://192.168.1.43:9001"
     }
 }
 
