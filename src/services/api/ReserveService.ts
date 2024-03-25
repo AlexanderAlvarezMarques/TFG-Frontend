@@ -1,17 +1,14 @@
 import ReserveApi from '@/lib/api/reserve/reservesApi';
 import {format} from "date-fns";
 
-const searchReserves = async (city: string, sport: string, date: Date, time: Date | null, page: number = 1) => {
+const searchReserves = async (city: number, sport: string, date: Date, page: number = 1) => {
 
-    const startDate = format(date, 'yyyy-MM-dd');
-    if (time) {
-        startDate.concat('T', format(time, 'HH:mm'));
-    }
+    const startDate = format(date, 'yyyy-MM-dd HH:mm');
 
     const params = {
         city: city,
         sport: sport,
-        startDate: date,
+        startDate: startDate,
         page: page,
     };
 
@@ -22,8 +19,27 @@ const getReserve = async (id: number) => {
     return ReserveApi.apiGetReserve(id);
 }
 
+const createReserve = async (courtId: number, date: Date, hour: number, minutes: number, duration: number)  => {
+
+    date.setHours(hour, minutes, 0, 0);
+    const startDate = date;
+    const endDate = new Date(startDate.getTime() + duration * 60000);
+
+    const reserve = {
+        "court": {
+            "id": courtId
+        },
+        "startDate": format(startDate, 'yyyy-MM-dd HH:mm'),
+        "endDate": format(endDate, 'yyyy-MM-dd HH:mm')
+    }
+
+    return ReserveApi.apiCreateReserve(reserve);
+
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     searchReserves,
-    getReserve
+    getReserve,
+    createReserve,
 }

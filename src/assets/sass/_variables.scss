@@ -10,3 +10,10 @@ $navbar-font-color: #EEE;
 
 // Web
 $web-font-color: #141514;
+
+// Modal
+  // Reserve modal
+    // Schedule
+      $modal-reserve-schedule-available: rgba(0, 255, 0, 0.5);
+      $modal-reserve-schedule-unavailable: rgba(255, 0, 0, 0.5);
+      $modal-reserve-schedule-available_hover: rgba(26, 120, 50, 0.8);

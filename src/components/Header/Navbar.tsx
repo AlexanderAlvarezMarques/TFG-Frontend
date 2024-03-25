@@ -2,11 +2,11 @@ import Link from "next/link"
 
 import styles from "@/assets/sass/components/navbar.module.scss";
 import {useSelector} from "react-redux";
-import store from "@/redux/store";
 
 export const Navbar = () => {
 
-    const auth = useSelector((state: StorageState) => state.authorization);
+    const auth: AuthToken = useSelector((state: StorageState) => state.authorization);
+    const token = localStorage.getItem('token');
 
     return (
         <nav className={styles.navbar}>
@@ -23,7 +23,7 @@ export const Navbar = () => {
             </ul>
             <ul>
                 {
-                    !auth.token ?
+                    !auth.isLogged && !token ?
                     (
                         <>
                             <li>

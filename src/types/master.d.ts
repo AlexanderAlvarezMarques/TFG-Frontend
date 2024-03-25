@@ -14,6 +14,7 @@ type Province = {
 type City = {
     id: number,
     name: string
+    province: Province
     sportCenters?: SportCenter[]
 }
 

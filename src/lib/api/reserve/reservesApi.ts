@@ -9,8 +9,14 @@ const apiGetReserve = async (id: number) => globalAxios.get(
     `/reserves/${id}`
 );
 
+const apiCreateReserve = async (reserve: any) => globalAxios.post(
+    "/reserves",
+    reserve
+);
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     apiSearchReserves,
-    apiGetReserve
+    apiGetReserve,
+    apiCreateReserve,
 }

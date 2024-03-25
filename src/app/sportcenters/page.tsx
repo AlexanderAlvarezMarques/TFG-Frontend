@@ -1,9 +1,9 @@
-import getAllSportCenters from "@/lib/api/sportCenter/sportCentersApi";
+import SportCentersApi from "@/lib/api/sportCenter/sportCentersApi";
 import Link from "next/link";
 
 export default async function SportCentersPage() {
 
-    const sportCentersData: Promise<SportCenter[]> = getAllSportCenters()
+    const sportCentersData: Promise<SportCenter[]> = SportCentersApi.getAllSportCenters()
     const sportCenters = await sportCentersData;
 
     return (

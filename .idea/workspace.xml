@@ -6,23 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="8146642f-6adc-48aa-a85a-d7947569cc57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/reserves/[reserveId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reserves/[reserveId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/reserves/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reserves/search/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/sportcenters/[sportCenterId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sportcenters/[sportCenterId]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/sportcenters/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sportcenters/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/_modals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/_modals.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/sass/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sass/components/Modal/createReserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/components/Modal/createReserve.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/sass/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/globals.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/navbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/components/navbar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/search-engine.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/components/searchEngine.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modal/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/Modal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Modal/Reserve/CreateReserveModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/Reserve/CreateReserveModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modal/Reserve/RenderReserveAvailability.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/Reserve/RenderReserveAvailability.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchReservesEngine.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shared/SearchReservesEngine.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/api/master/masterApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/master/masterApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/api/sportCenters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/sportCenter/sportCentersApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/api/reserve/reservesApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/reserve/reservesApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/partials/MatchReserveInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/partials/MatchReserveInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/authorizationReducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/authorizationReducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/api/ReserveService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/ReserveService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/types/master.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/master.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/types/sportCenter.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/sportCenter.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/user.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/user.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/LocalStorageTools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LocalStorageTools.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/api/MasterApiTool.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api/MasterApiTool.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/axios.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/axios.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +46,8 @@
         <option value="com.haulmont.rcb.README" />
         <option value="CSS File" />
         <option value="SCSS File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -66,27 +71,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ReactCreateComponentLastSelected&quot;: &quot;functionDeclarationComponent&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/alexander/Documentos/University/TFG/app/frontend/src/redux/reducers&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/alexander/Documentos/University/TFG/app/frontend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ReactCreateComponentLastSelected": "functionDeclarationComponent",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "full.screen.before.presentation.mode": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/alexander/Documentos/University/TFG/app/frontend/src/components/Shared",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/home/alexander/Documentos/University/TFG/app/frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -101,6 +106,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Shared" />
       <recent name="$PROJECT_DIR$/src/redux/reducers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -191,6 +197,23 @@
       <workItem from="1705484533981" duration="322000" />
       <workItem from="1705484865568" duration="4737000" />
       <workItem from="1705516840711" duration="3813000" />
+      <workItem from="1705651641666" duration="33000" />
+      <workItem from="1705651685010" duration="19208000" />
+      <workItem from="1705691288445" duration="2433000" />
+      <workItem from="1706004339177" duration="804000" />
+      <workItem from="1706018287616" duration="5586000" />
+      <workItem from="1706093951892" duration="3675000" />
+      <workItem from="1706176946313" duration="1849000" />
+      <workItem from="1706268248755" duration="3887000" />
+      <workItem from="1709028867281" duration="4879000" />
+      <workItem from="1710438148867" duration="2521000" />
+      <workItem from="1710508833156" duration="805000" />
+      <workItem from="1710846273852" duration="87000" />
+      <workItem from="1710846371761" duration="2073000" />
+      <workItem from="1710849561650" duration="9246000" />
+      <workItem from="1711027354013" duration="4005000" />
+      <workItem from="1711139932697" duration="133000" />
+      <workItem from="1711358279850" duration="2699000" />
     </task>
     <servers />
   </component>

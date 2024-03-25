@@ -3,10 +3,10 @@ type SportCenter = {
     "name": string,
     "country": string,
     "state": string,
-    "city": string,
+    "city": City,
     "street": string,
     "postalCode": string,
-    "courts": [
+    "courts"?: [
         {
             "identifier": string,
             "number": number,
@@ -36,7 +36,15 @@ type ReserveScheduleHour = {
     };
 }
 
-type ReserveSchedule = {
+type Court = {
+    id?: number;
+    identifier?: string;
+    number: number;
+    sport: string;
+    sportCenter: SportCenter;
+};
+
+type CourtSchedule = {
     id: number;
     number: number;
     schedule: ReserveScheduleHour[];

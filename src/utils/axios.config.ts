@@ -20,7 +20,7 @@ const refreshToken = async () => {
     if (status === HTTP_STATUS.OK) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('refresh_token', data.refresh_token);
-        return data.access_token;
+        return data.token;
     }
 
     // If refresh token is not valid, logout user
@@ -74,7 +74,17 @@ globalAxios.interceptors.response.use(
             try {
                 const newToken = await refreshToken();
                 originalRequest.headers.Authorization = `Bearer ${newToken}`;
-                return axios(originalRequest);
+                originalRequest.url = originalRequest.url.replace('/api', '');
+
+                globalAxios(originalRequest)
+                    .then((response) => {
+                        return response.data;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+
+                // return axios(originalRequest);
             } catch (refreshError) {
                 return Promise.reject(refreshError);
             }

@@ -1,4 +1,4 @@
-import getAllSportCenters, {getSportCenterDetailsById} from "@/lib/api/sportCenter/sportCentersApi";
+import SportCentersApi from "@/lib/api/sportCenter/sportCentersApi";
 import {notFound} from "next/navigation";
 
 type Params = {
@@ -8,7 +8,7 @@ type Params = {
 }
 
 export async function generateStaticParams() {
-    const sportCentersData: Promise<SportCenter[]> = getAllSportCenters()
+    const sportCentersData: Promise<SportCenter[]> = SportCentersApi.getAllSportCenters()
     const sportCenters = await sportCentersData;
 
     return sportCenters.map(sportCenter => ({
@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params: { sportCenterId}}: Params) {
-    const sportCenterData:Promise<SportCenter> = getSportCenterDetailsById(sportCenterId);
+    const sportCenterData:Promise<SportCenter> = SportCentersApi.getSportCenterDetailsById(sportCenterId);
     const sportCenter = await sportCenterData;
 
     if (sportCenter === undefined) {
@@ -34,7 +34,7 @@ export async function generateMetadata({ params: { sportCenterId}}: Params) {
 
 export default async function SportCenterDetailPage({ params: {sportCenterId} }: Params) {
 
-    const sportCenterData:Promise<SportCenter> = getSportCenterDetailsById(sportCenterId);
+    const sportCenterData:Promise<SportCenter> = SportCentersApi.getSportCenterDetailsById(sportCenterId);
     const sportCenter = await sportCenterData;
 
     if (sportCenter === undefined) return notFound();
@@ -43,7 +43,7 @@ export default async function SportCenterDetailPage({ params: {sportCenterId} }:
         <section>
             <ul>
                 <li>Nombre: {sportCenter.name}</li>
-                <li>Ciudad: {sportCenter.city}</li>
+                {/*<li>Ciudad: {sportCenter.city}</li>*/}
                 <li>Calle: {sportCenter.street}</li>
             </ul>
         </section>

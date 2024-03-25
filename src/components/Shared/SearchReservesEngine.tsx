@@ -5,21 +5,28 @@ import 'react-datepicker/dist/react-datepicker.css';
 import styles from "@/assets/sass/components/searchEngine.module.scss"
 
 // Imports
-import React, {useEffect, useState} from 'react';
+import React, {FormEvent, useEffect, useState} from 'react';
 import DatePicker from 'react-datepicker';
-import {usePathname, useRouter} from "next/navigation";
-import {format} from "date-fns";
+import {useRouter, useSearchParams} from "next/navigation";
+import { format } from "date-fns";
 
 // Services
 import ReserveService from "@/services/api/ReserveService";
 
 type Props = {
+    page: number,
+    limit?: number,
     setData?: Function,
+    province?: string,
     city?: string,
     sport?: string,
     date?: Date,
-    page: number,
-    limit?: number,
+}
+
+interface LocalStorageData {
+    provinces: Province[];
+    cities: City[];
+    sports: Sport[];
 }
 
 type Options = {
@@ -29,9 +36,12 @@ type Options = {
 
 export default function SearchReservesEngine(props: Props) {
 
+    const [localStorageData, setLocalStorageData] = useState<LocalStorageData>();
+
     // Hooks
     const router = useRouter();
-    const pathName = usePathname();
+    const searchParams = useSearchParams();
+    const [provinces, setProvinces] = useState<Options[]>([]);
     const [cities, setCities] = useState<Options[]>([]);
     const [sports, setSports] = useState<Options[]>([]);
 
@@ -43,54 +53,154 @@ export default function SearchReservesEngine(props: Props) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     // Form parameters
-    const [city, setCity] = useState<string>(props.city ?? "");
+    const [province, setProvince] = useState<number>(Number(props.province ?? -1));
+    const [city, setCity] = useState<number>(Number(props.city));
     const [sport, setSport] = useState<string>(props.sport ?? "");
-    const [date, setDate] = useState<Date>(props.date ?? new Date());
-    const [time, setTime] = useState<Date>(props.date ?? date);
+    const [date, setDate] = useState<Date>(props.date ? new Date(props.date) : new Date());
 
-    time.setMinutes(Math.ceil(time.getMinutes() / 15) * 15);
-
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (!setData) {
-            const formattedDate = format(date as Date, "yyyy/MM/dd");
-            const formattedTime = format(time as Date, "HH:mm");
-            const queryParams = `city=${city}&sport=${sport}&date=${formattedDate}&time=${formattedTime}&page=${props.page}`;
+            const formattedDate = format(date as Date, "yyyy-MM-dd") + "T" + format(date as Date, "HH:mm");
+            const queryParams = `province=${province}&city=${city}&sport=${sport}&date=${formattedDate}&page=${props.page}`;
             router.push(`/reserves/search?${queryParams}`);
         } else {
+            searchReserves();
+        }
+    };
+
+    const searchReserves = async () => {
+        if (setData) {
             setIsLoading(true);
-            const reserves = await ReserveService.searchReserves(city, sport, date, time, props.page);
+            date.setMinutes(Math.ceil(date.getMinutes() / 15) * 15);
+            const reserves = await ReserveService.searchReserves(city, sport, date, props.page);
             setIsLoading(false);
 
             setData(reserves.data);
         }
-    };
+    }
 
     useEffect(() => {
         // Fetch cities and sports data
         const fetchMasterData = async () => {
 
-            const cities = JSON.parse(localStorage.getItem("cities") ?? "[]");
-            const sports = JSON.parse(localStorage.getItem("sports") ?? "[]");
+            const provinces = localStorage.getItem('provinces') ?? '[]';
+            const cities = localStorage.getItem('cities') ?? '[]';
+            const sports = localStorage.getItem('sports') ?? '[]';
 
-            setCities(cities);
-            setSports(sports);
+            setLocalStorageData({
+                provinces: JSON.parse(provinces),
+                cities: JSON.parse(cities),
+                sports: JSON.parse(sports),
+            });
+
+            setProvinces(JSON.parse(provinces));
+            setCities(JSON.parse(cities));
+            setSports(JSON.parse(sports));
+
+            if (props.province) {
+                setProvince(Number(props.province));
+            } else if (provinces.length !== 0) {
+                setProvince(-1);
+            }
+
+            if (props.city) {
+                setCity(Number(props.city));
+            } else if (cities.length !== 0) {
+                setCity(cities[0].id);
+            }
+
+            if (props.sport) {
+                setSport(props.sport);
+            } else if (sports.length !== 0) {
+                setSport(sports[0].name);
+            }
+
+            if (props.date) setDate(new Date(props.date));
+            date.setMinutes(Math.ceil(date.getMinutes() / 15) * 15);
+
+            loadReserves();
         };
+
+        const loadReserves = async () => {
+            if (
+                searchParams.get('city') &&
+                searchParams.get('sport') &&
+                searchParams.get('date') &&
+                setData
+            ) {
+                searchReserves();
+            }
+        }
 
         fetchMasterData();
     }, []);
 
+    useEffect(() => {
+        const provinces = localStorageData?.provinces.filter((p: Province) => p.id == province) ?? [];
+
+        if (provinces.length > 0) {
+            const cities = provinces[0].cities ?? [];
+
+            if (cities.length > 0) {
+                setCities(cities);
+                setCity(cities[0].id ?? -1);
+            } else {
+                setCities([]);
+                setCity(-1);
+            }
+        } else {
+            setCities([]);
+            setCity(-1);
+        }
+    }, [province]);
+
     return (
         <div className={styles.searchEngine}>
             <form className={`form ${styles.searchEngineForm}`} onSubmit={handleSubmit}>
+
+                {/* Province */}
+                <div className={`formGroup`}>
+                    <label htmlFor="state">Ciudad</label>
+                    <select
+                        name="province"
+                        id="province"
+                        onChange={(e: any) => setProvince(Number(e.target.value))}
+                        defaultValue={province}
+                    >
+                        {
+                            province == -1 && (
+                                <option value="">...</option>
+                            )
+                        }
+                        {
+                            provinces.map((p: Options, index: number) => (
+                                <option key={index} value={p.id}>{p.name}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+
                 {/* City */}
                 <div className={`formGroup`}>
                     <label htmlFor="state">Ciudad</label>
-                    <select name="city" id="city" onChange={(e:any) => setCity(e.target.value)} value={city}>
-                        {cities.map((c: Options, index: number) => (
-                            <option key={index} value={c.id}>{c.name}</option>
-                        ))}
+                    <select
+                        name="city"
+                        id="city"
+                        onChange={(e: any) => setCity(Number(e.target.value))}
+                        defaultValue={city}
+                    >
+                        {
+                            city == -1 && (
+                                <option value="">...</option>
+                            )
+                        }
+                        {
+                            cities.map((c: Options, index: number) => (
+                                <option key={index} value={c.id}>{c.name}</option>
+                            ))
+                        }
                     </select>
                 </div>
 
@@ -113,8 +223,8 @@ export default function SearchReservesEngine(props: Props) {
                 <div className={`formGroup`}>
                     <label htmlFor="time">Hora</label>
                     <DatePicker
-                        selected={time}
-                        onChange={(time: Date) => setTime(time)}
+                        selected={date}
+                        onChange={(time: Date) => setDate(time)}
                         showTimeSelect
                         showTimeSelectOnly
                         timeIntervals={15}
@@ -131,9 +241,10 @@ export default function SearchReservesEngine(props: Props) {
                 {/* Sport */}
                 <div className={`formGroup`}>
                     <label htmlFor="">Deporte</label>
-                    <select name="sport" id="sport" onChange={(e: any) => setSport(e.target.value)}  value={sport}>
+                    <select name="sport" id="sport" onChange={(e: any) => setSport(e.target.value)} value={sport}>
                         {sports.map((s: Options, index: number) => (
-                            <option key={index} value={s.name}>{s.name[0].toUpperCase() + s.name.slice(1).toLowerCase()}</option>
+                            <option key={index}
+                                    value={s.name}>{s.name[0].toUpperCase() + s.name.slice(1).toLowerCase()}</option>
                         ))}
                     </select>
                 </div>

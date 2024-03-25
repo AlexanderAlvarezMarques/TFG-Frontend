@@ -9,6 +9,9 @@ export async function readAndSetMasterData() {
 
     masterData.then((data: MasterData) => {
         Object.entries(data).forEach(([key, value]) => {
+            if (key === 'token' && value) {
+
+            }
             localStorage.setItem(key, JSON.stringify(value));
         })
     }).catch((error) => {

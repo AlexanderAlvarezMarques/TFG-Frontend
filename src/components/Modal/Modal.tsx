@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 
 type Props = {
     children: ReactNode,
-    onClose: Function
+    onClose: () => void,
+    target?: string,
 }
 
-export default function Modal({ children, onClose }: Props) {
+export default function Modal({ children, onClose, target = "modal-root" }: Props) {
 
-    const handleCloseClick = (e: any) => {
+    const handleCloseClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         e.preventDefault();
         onClose();
     }
@@ -28,5 +29,5 @@ export default function Modal({ children, onClose }: Props) {
         </div>
     );
 
-    return ReactDOM.createPortal(modalContent, document.getElementById("modal-root")!);
+    return ReactDOM.createPortal(modalContent, document.getElementById(target)!);
 }

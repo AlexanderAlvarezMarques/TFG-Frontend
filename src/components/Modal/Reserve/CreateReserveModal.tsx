@@ -53,7 +53,7 @@ const CreateReserveModal = () => {
     const [sport, setSport] = useState<string>('');
     const [date, setDate] = useState<Date>(new Date());
 
-    const [reserves, setReserves] = useState<ReserveSchedule[]>([]);
+    const [reserves, setReserves] = useState<CourtSchedule[]>([]);
 
     // Fetch initial data
     useEffect(() => {
@@ -79,6 +79,9 @@ const CreateReserveModal = () => {
             if (cities.length > 0) {
                 setCities(cities);
                 setCity(cities[0].id ?? -1);
+            } else {
+                setCities([]);
+                setCity(-1);
             }
         } else {
             setCities([]);
@@ -91,9 +94,11 @@ const CreateReserveModal = () => {
         if (cities.length > 0) {
             const sportCenters = cities[0].sportCenters ?? [];
             if (sportCenters.length > 0) {
-                console.log("Use effect city 3");
                 setSportCenters(sportCenters);
                 setSportCenter(sportCenters[0].id);
+            } else {
+                setSportCenters([]);
+                setSportCenter(-1);
             }
         } else {
             setSportCenters([]);
@@ -256,7 +261,7 @@ const CreateReserveModal = () => {
 
             {/*{ reservesAvailable }*/}
             {
-                reserves.length > 0 ? <RenderReserveAvailability sport={sport} reserves={reserves} /> : <></>
+                reserves.length > 0 ? <RenderReserveAvailability sport={sport} courts={reserves} date={date}/> : <></>
             }
         </Modal>
     );

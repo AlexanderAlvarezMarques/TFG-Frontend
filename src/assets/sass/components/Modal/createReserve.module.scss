@@ -56,12 +56,17 @@
       }
 
       .available {
-        background-color: rgba(0, 255, 0, 0.5);
+        background-color: variables.$modal-reserve-schedule-available;
         color: variables.$web-font-color;
+
+        &:hover {
+          background-color: variables.$modal-reserve-schedule-available_hover;
+          cursor: pointer;
+        }
       }
 
       .unavailable {
-          background-color: rgba(255, 0, 0, 0.5);
+          background-color: variables.$modal-reserve-schedule-unavailable;
           color: #f9f5ec;
       }
     }

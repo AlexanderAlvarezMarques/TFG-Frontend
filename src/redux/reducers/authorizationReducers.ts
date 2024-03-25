@@ -16,11 +16,18 @@ const authorizationSlicer = createSlice( {
             state.refresh_token = refresh_token;
             state.isLogged = true;
         },
+        setUserLogged: (state, action) => {
+            state.isLogged = true;
+        },
         clearToken: (state) => {
             Object.assign(state, initialState)
         }
     }
 })
 
-export const { setToken, clearToken } = authorizationSlicer.actions
+export const {
+    setToken,
+    clearToken,
+    setUserLogged
+} = authorizationSlicer.actions
 export default authorizationSlicer.reducer
