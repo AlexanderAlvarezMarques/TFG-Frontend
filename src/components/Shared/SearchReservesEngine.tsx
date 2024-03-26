@@ -23,10 +23,17 @@ type Props = {
     date?: Date,
 }
 
-interface LocalStorageData {
+interface DataList {
     provinces: Province[];
     cities: City[];
     sports: Sport[];
+}
+
+interface FormProps {
+    province: number,
+    city: number,
+    sport: string,
+    date: Date
 }
 
 type Options = {
@@ -36,34 +43,37 @@ type Options = {
 
 export default function SearchReservesEngine(props: Props) {
 
-    const [localStorageData, setLocalStorageData] = useState<LocalStorageData>();
-
     // Hooks
     const router = useRouter();
     const searchParams = useSearchParams();
-    const [provinces, setProvinces] = useState<Options[]>([]);
-    const [cities, setCities] = useState<Options[]>([]);
-    const [sports, setSports] = useState<Options[]>([]);
+
+    const [formData, setFormData] = useState<FormProps>({
+        province: props.province ? Number(props.province) : -1,
+        city: props.city ? Number(props.city) : -1,
+        sport: props.sport ?? '',
+        date: props.date ? new Date(props.date) : new Date(),
+    })
+
+    const [dataList, setDataList] = useState<DataList>({
+        provinces: [],
+        cities: [],
+        sports: []
+    });
 
     // Auxiliary constants
-    const {setData} = props;
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const today = new Date();
     const minTime = new Date(0, 0, 0, 8, 0);
     const maxTime = new Date(0, 0, 0, 23, 0);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-
-    // Form parameters
-    const [province, setProvince] = useState<number>(Number(props.province ?? -1));
-    const [city, setCity] = useState<number>(Number(props.city));
-    const [sport, setSport] = useState<string>(props.sport ?? "");
-    const [date, setDate] = useState<Date>(props.date ? new Date(props.date) : new Date());
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!setData) {
-            const formattedDate = format(date as Date, "yyyy-MM-dd") + "T" + format(date as Date, "HH:mm");
-            const queryParams = `province=${province}&city=${city}&sport=${sport}&date=${formattedDate}&page=${props.page}`;
+        const {province, city, sport, date } = formData;
+        const formattedDate = format(date, 'yyyy-MM-dd') + 'T' + format(date, 'HH:mm');
+        const queryParams = `province=${province}&city=${city}&sport=${sport}&date=${formattedDate}&page=${props.page}`;
+
+        if (!props.setData) {
             router.push(`/reserves/search?${queryParams}`);
         } else {
             searchReserves();
@@ -71,111 +81,131 @@ export default function SearchReservesEngine(props: Props) {
     };
 
     const searchReserves = async () => {
-        if (setData) {
+        if (props.setData) {
+            const { city, sport, date } = formData;
+
             setIsLoading(true);
             date.setMinutes(Math.ceil(date.getMinutes() / 15) * 15);
             const reserves = await ReserveService.searchReserves(city, sport, date, props.page);
             setIsLoading(false);
 
-            setData(reserves.data);
+            props.setData(reserves.data);
         }
     }
 
     useEffect(() => {
         // Fetch cities and sports data
-        const fetchMasterData = async () => {
+        const provinces = JSON.parse(localStorage.getItem('provinces') ?? '[]');
+        const cities = JSON.parse(localStorage.getItem('cities') ?? '[]');
+        const sports = JSON.parse(localStorage.getItem('sports') ?? '[]');
 
-            const provinces = localStorage.getItem('provinces') ?? '[]';
-            const cities = localStorage.getItem('cities') ?? '[]';
-            const sports = localStorage.getItem('sports') ?? '[]';
+        setDataList({ provinces, cities, sports });
 
-            setLocalStorageData({
-                provinces: JSON.parse(provinces),
-                cities: JSON.parse(cities),
-                sports: JSON.parse(sports),
-            });
+        // Check if there are query parameters
+        const queryParams = Object.fromEntries(searchParams.entries());
+        if (queryParams.province) {
+            const selectedProvinceId = parseInt(queryParams.province);
 
-            setProvinces(JSON.parse(provinces));
-            setCities(JSON.parse(cities));
-            setSports(JSON.parse(sports));
+            // Set the cities based on the selected province
+            const selectedProvince = provinces.find((province: any) => province.id === selectedProvinceId);
+            if (selectedProvince) {
+                const newCities = selectedProvince.cities || [];
+                setDataList((prevDataList) => ({
+                    ...prevDataList,
+                    cities: newCities
+                }));
 
-            if (props.province) {
-                setProvince(Number(props.province));
-            } else if (provinces.length !== 0) {
-                setProvince(-1);
+                // Set city in formData if present in query params
+                if (queryParams.city) {
+                    setFormData((prevFormData) => ({
+                        ...prevFormData,
+                        city: parseInt(queryParams.city),
+                    }));
+                }
             }
+        }
 
-            if (props.city) {
-                setCity(Number(props.city));
-            } else if (cities.length !== 0) {
-                setCity(cities[0].id);
-            }
+        if (queryParams.sport) {
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                sport: queryParams.sport,
+            }));
+        }
 
-            if (props.sport) {
-                setSport(props.sport);
-            } else if (sports.length !== 0) {
-                setSport(sports[0].name);
-            }
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            province: props.province ? Number(props.province) : -1,
+            city: props.city ? Number(props.city) : -1,
+            sport: props.sport ?? '',
+            date: props.date ? new Date(props.date) : new Date(),
+        }));
 
-            if (props.date) setDate(new Date(props.date));
+        if (props.date) {
+            const date = new Date(props.date);
             date.setMinutes(Math.ceil(date.getMinutes() / 15) * 15);
+            setFormData((prevFormData) => ({ ...prevFormData, date }));
+        }
 
-            loadReserves();
-        };
-
-        const loadReserves = async () => {
-            if (
-                searchParams.get('city') &&
-                searchParams.get('sport') &&
-                searchParams.get('date') &&
-                setData
-            ) {
+        const loadReserves = () => {
+            if (searchParams.get('city') && searchParams.get('sport') && searchParams.get('date') && props.setData) {
                 searchReserves();
             }
-        }
+        };
 
-        fetchMasterData();
+        loadReserves();
     }, []);
 
-    useEffect(() => {
-        const provinces = localStorageData?.provinces.filter((p: Province) => p.id == province) ?? [];
+    const handleInputChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    };
 
-        if (provinces.length > 0) {
-            const cities = provinces[0].cities ?? [];
+    const handleProvinceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const { value } = e.target;
+        const { provinces } = dataList;
 
-            if (cities.length > 0) {
-                setCities(cities);
-                setCity(cities[0].id ?? -1);
-            } else {
-                setCities([]);
-                setCity(-1);
-            }
-        } else {
-            setCities([]);
-            setCity(-1);
+        const selectedProvince = provinces.find((province) => province.id === parseInt(value, 10));
+        if (selectedProvince) {
+
+            const newCities = selectedProvince.cities || [];
+
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                province: selectedProvince.id,
+                city: newCities.length > 0 ? newCities[0].id : -1,
+            }));
+
+            setDataList((prevLocalStorageData) => ({
+                ...prevLocalStorageData,
+                cities: newCities
+            }));
         }
-    }, [province]);
+    };
+
+    const handleDateChange = (date: Date) => {
+        setFormData((prevFormData) => ({ ...prevFormData, date }));
+    };
 
     return (
         <div className={styles.searchEngine}>
             <form className={`form ${styles.searchEngineForm}`} onSubmit={handleSubmit}>
 
                 {/* Province */}
-                <div className={`formGroup`}>
-                    <label htmlFor="state">Ciudad</label>
+                <div className={`formGroup ${styles.formGroup}`}>
+                    <label htmlFor="state">Provincia</label>
                     <select
                         name="province"
                         id="province"
-                        onChange={(e: any) => setProvince(Number(e.target.value))}
-                        defaultValue={province}
+                        onChange={handleProvinceChange}
+                        value={formData.province}
                     >
                         {
-                            province == -1 && (
+                            formData.province == -1 && (
                                 <option value="">...</option>
                             )
                         }
                         {
-                            provinces.map((p: Options, index: number) => (
+                            dataList.provinces.map((p: Options, index: number) => (
                                 <option key={index} value={p.id}>{p.name}</option>
                             ))
                         }
@@ -183,33 +213,34 @@ export default function SearchReservesEngine(props: Props) {
                 </div>
 
                 {/* City */}
-                <div className={`formGroup`}>
+                <div className={`formGroup ${styles.formGroup}`}>
                     <label htmlFor="state">Ciudad</label>
                     <select
                         name="city"
                         id="city"
-                        onChange={(e: any) => setCity(Number(e.target.value))}
-                        defaultValue={city}
+                        onChange={handleInputChange}
+                        value={formData.city}
                     >
                         {
-                            city == -1 && (
+                            formData.city == -1 && (
                                 <option value="">...</option>
                             )
                         }
                         {
-                            cities.map((c: Options, index: number) => (
+                            formData.province != -1 &&
+                            (dataList.cities.map((c: Options, index: number) => (
                                 <option key={index} value={c.id}>{c.name}</option>
-                            ))
+                            )))
                         }
                     </select>
                 </div>
 
                 {/* Day */}
-                <div className={`formGroup`}>
+                <div className={`formGroup ${styles.formGroup}`}>
                     <label htmlFor="">Día</label>
                     <DatePicker
-                        selected={date}
-                        onChange={(date: Date) => setDate(date)}
+                        selected={formData.date}
+                        onChange={handleDateChange}
                         dateFormat="dd/MM/yyyy"
                         minDate={today}
                         className={`customInput datePicker`}
@@ -220,11 +251,11 @@ export default function SearchReservesEngine(props: Props) {
                 </div>
 
                 {/*Hour */}
-                <div className={`formGroup`}>
+                <div className={`formGroup ${styles.formGroup}`}>
                     <label htmlFor="time">Hora</label>
                     <DatePicker
-                        selected={date}
-                        onChange={(time: Date) => setDate(time)}
+                        selected={formData.date}
+                        onChange={handleDateChange}
                         showTimeSelect
                         showTimeSelectOnly
                         timeIntervals={15}
@@ -239,10 +270,10 @@ export default function SearchReservesEngine(props: Props) {
                 </div>
 
                 {/* Sport */}
-                <div className={`formGroup`}>
+                <div className={`formGroup ${styles.formGroup}`}>
                     <label htmlFor="">Deporte</label>
-                    <select name="sport" id="sport" onChange={(e: any) => setSport(e.target.value)} value={sport}>
-                        {sports.map((s: Options, index: number) => (
+                    <select name="sport" id="sport"  value={formData.sport} onChange={handleInputChange}>
+                        {dataList.sports.map((s: Options, index: number) => (
                             <option key={index}
                                     value={s.name}>{s.name[0].toUpperCase() + s.name.slice(1).toLowerCase()}</option>
                         ))}
@@ -251,7 +282,7 @@ export default function SearchReservesEngine(props: Props) {
 
                 {/* Submit */}
                 <div className={`formGroup ${styles.searchButton}`}>
-                    <input type="submit" value={`${isLoading ? "..." : "Buscar"}`} className={`btn btn-primary`}/>
+                    <input type="submit" value={`${isLoading ? "..." : "Buscar"}`} className={`btn btn-primary ${styles.btn}`} disabled={formData.province === -1 && formData.city === -1}/>
                 </div>
             </form>
         </div>

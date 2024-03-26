@@ -9,12 +9,17 @@ $timeListItem: (
     flex-direction: row;
     justify-content: space-evenly;
 
+    .btn {
+      height: auto !important;
+    }
+
     .searchButton {
       align-self: flex-end;
     }
 
     .formGroup {
       width: 15%;
+      min-width: 15%;
     }
 
     // It adjust the clear button position better than the default
@@ -29,7 +34,6 @@ $timeListItem: (
 
     .timePicker {
       text-align: center;
-      width: 100%;
     }
 
     .timePickerPopper {
