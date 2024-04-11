@@ -2,9 +2,11 @@
 
 import SearchReservesEngine from "@/components/Shared/SearchReservesEngine";
 import { useState, useEffect } from "react";
-import ReserveService from "@/services/api/ReserveService";
 import { InfoCard } from "@/partials/MatchReserveInfo";
 import CreateReserveModal from "@/components/Modal/Reserve/CreateReserveModal";
+
+// CSS
+import "@/assets/sass/pages/searchReserves.scss";
 
 type Params = {
     searchParams?: {
@@ -52,15 +54,18 @@ export default function SearchReservesPage (params: Params) {
             <CreateReserveModal />
 
             <div className="reserves">
-                {
-                    data.length > 0 ?
-                        (data.map((reserve: DashboardReserve) => {
-                            return <InfoCard reserve={reserve} key={reserve.id}/>
-                        })) :
-                        (<div className="alert alert-danger">
-                            <p>No reserves found</p>
-                        </div>)
-                }
+                {data.length > 0 ? (
+                    <div className={`search-reserves`}>
+                        {data.map((reserve: DashboardReserve) => (
+                            <InfoCard reserve={reserve} key={reserve.id} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="alert alert-danger">
+                        <p>No reserves found</p>
+                    </div>
+                )}
+
             </div>
         </>
     );

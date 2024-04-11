@@ -20,6 +20,10 @@ $timeListItem: (
     .formGroup {
       width: 15%;
       min-width: 15%;
+
+      input {
+        width: 100%;
+      }
     }
 
     // It adjust the clear button position better than the default

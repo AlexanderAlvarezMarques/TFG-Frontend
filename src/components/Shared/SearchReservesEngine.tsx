@@ -140,11 +140,9 @@ export default function SearchReservesEngine(props: Props) {
             date: props.date ? new Date(props.date) : new Date(),
         }));
 
-        if (props.date) {
-            const date = new Date(props.date);
-            date.setMinutes(Math.ceil(date.getMinutes() / 15) * 15);
-            setFormData((prevFormData) => ({ ...prevFormData, date }));
-        }
+        const ceilDate = formData.date;
+        ceilDate.setMinutes(Math.ceil(ceilDate.getMinutes() / 15) * 15);
+        setFormData((prevFormData) => ({ ...prevFormData, ceilDate }));
 
         const loadReserves = () => {
             if (searchParams.get('city') && searchParams.get('sport') && searchParams.get('date') && props.setData) {

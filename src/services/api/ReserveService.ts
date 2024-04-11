@@ -37,9 +37,34 @@ const createReserve = async (courtId: number, date: Date, hour: number, minutes:
 
 }
 
+const deleteParticipantFromReserve = async (reserveId: number, participantId: number) => {
+    return ReserveApi.apiDeleteParticipant(reserveId, participantId);
+}
+
+const acceptParticipantFromReserve = async (reserveId: number, participantId: number) => {
+    return ReserveApi.apiAcceptParticipant(reserveId, participantId);
+}
+
+const rejectParticipantFromReserve = async (reserveId: number, participantId: number) => {
+    return ReserveApi.apiRejectParticipant(reserveId, participantId);
+}
+
+const cancelParticipationInReserve = async (reserveId: number, participantId: number) => {
+    return ReserveApi.apiCancelParticipation(reserveId, participantId);
+}
+
+const deleteReserve = async (id: number) => {
+    return ReserveApi.apiDeleteReserve(id);
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     searchReserves,
     getReserve,
     createReserve,
+    acceptParticipantFromReserve,
+    rejectParticipantFromReserve,
+    cancelParticipationInReserve,
+    deleteParticipantFromReserve,
+    deleteReserve,
 }

@@ -6,8 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="8146642f-6adc-48aa-a85a-d7947569cc57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/reserves/[reserveId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reserves/[reserveId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/reserves/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reserves/search/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/sass/components/searchEngine.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/components/searchEngine.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/reserveDetails.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/reserveDetails.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchReservesEngine.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shared/SearchReservesEngine.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/api/reserve/reservesApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/reserve/reservesApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/api/ReserveService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/ReserveService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/reserve.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/reserve.type.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +32,9 @@
         <option value="com.haulmont.rcb.useInitial" />
         <option value="com.haulmont.rcb.README" />
         <option value="CSS File" />
-        <option value="SCSS File" />
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -58,8 +66,8 @@
     "TODO_SCOPE": "All Places",
     "WebServerToolWindowFactoryState": "false",
     "full.screen.before.presentation.mode": "true",
-    "git-widget-placeholder": "bug/SearchEngine",
-    "last_opened_file_path": "/home/alexander/Documentos/University/TFG/app/frontend/src/components/Shared",
+    "git-widget-placeholder": "feat/Pagination",
+    "last_opened_file_path": "/home/alexander/Documentos/University/TFG/app/frontend/src/enums",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -85,6 +93,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/enums" />
       <recent name="$PROJECT_DIR$/src/components/Shared" />
       <recent name="$PROJECT_DIR$/src/redux/reducers" />
     </key>
@@ -193,6 +202,10 @@
       <workItem from="1711027354013" duration="4005000" />
       <workItem from="1711139932697" duration="133000" />
       <workItem from="1711358279850" duration="9896000" />
+      <workItem from="1711441044102" duration="2613000" />
+      <workItem from="1712314461600" duration="1383000" />
+      <workItem from="1712574414718" duration="1026000" />
+      <workItem from="1712836725232" duration="15052000" />
     </task>
     <servers />
   </component>

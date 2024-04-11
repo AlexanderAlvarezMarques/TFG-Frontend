@@ -27,7 +27,8 @@ type DashboardReserve =  {
 
 type ReserveDetails = {
     "id": number,
-    "reserveOwner"?: {
+    "isOwner": boolean,
+    "owner"?: {
         "id": number,
         "username": string,
     },
@@ -53,17 +54,11 @@ type ReserveDetails = {
         },
     },
     "participantLimit": number,
+    "isFull": boolean,
     "startDate": string,
     "endDate": string,
     "sport": string,
-    "participants"?: [
-        {
-            "participant": {
-                "id": number,
-                "username": string,
-            }
-        }
-    ],
+    "participants"?: ReserveParticipant[],
     "reserveRates": [
         {
             "participant": {
@@ -76,4 +71,12 @@ type ReserveDetails = {
     "status": string,
     "public": true,
     "averageRate": number,
+}
+
+type ReserveParticipant = {
+    "status": string,
+    "participant": {
+        "id": number,
+        "username": string,
+    },
 }
