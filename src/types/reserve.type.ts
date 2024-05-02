@@ -1,30 +1,3 @@
-type DashboardReserve =  {
-    "id": number,
-    "startDate": Date,
-    "endDate": Date,
-    "sport": string,
-    "participantLimit": number,
-    "isParticipant": boolean,
-    "court": {
-        "number": number,
-        "sport": string,
-        "sportCenter": {
-            "id": number,
-            "name": string,
-            "city": {
-                "name": string,
-                "province": {
-                    "name": string,
-                    "country": {
-                        "name": string,
-                        "isoCode": string
-                    }
-                }
-            }
-        }
-    }
-}
-
 type ReserveDetails = {
     "id": number,
     "isOwner": boolean,
@@ -54,6 +27,7 @@ type ReserveDetails = {
         },
     },
     "participantLimit": number,
+    "isParticipant": boolean,
     "isFull": boolean,
     "startDate": string,
     "endDate": string,

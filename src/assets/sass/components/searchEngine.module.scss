@@ -4,8 +4,12 @@ $timeListItem: (
 );
 
 .searchEngine {
+
+  width: 80%;
+  margin: 0 auto;
+
   .searchEngineForm {
-    width: 50%;
+    width: 70%;
     flex-direction: row;
     justify-content: space-evenly;
 

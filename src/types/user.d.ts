@@ -20,7 +20,7 @@ type Dashboard = {
         "next": [Match]
     },
     "reserves": {
-        "history": [DashboardReserve],
-        "active": [DashboardReserve]
+        "history": [ReserveDetails],
+        "active": [ReserveDetails]
     }
 }

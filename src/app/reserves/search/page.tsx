@@ -7,6 +7,7 @@ import CreateReserveModal from "@/components/Modal/Reserve/CreateReserveModal";
 
 // CSS
 import "@/assets/sass/pages/searchReserves.scss";
+import {log} from "node:util";
 
 type Params = {
     searchParams?: {
@@ -17,6 +18,11 @@ type Params = {
         time: string,
         page: number,
     }
+}
+
+interface CustomData {
+    data: ReserveDetails[];
+    pagination: Pagination
 }
 
 function getParams(params: Params) {
@@ -39,27 +45,64 @@ export default function SearchReservesPage (params: Params) {
 
     // Params
     const {province, city, sport, date} = getParams(params);
+    const [showMore, setShowMore] = useState<boolean>(false);
 
     // Pagination
     const [page, setPage] = useState<number>(params.searchParams?.page ?? 1);
 
     // Hooks
-    const [data, setData] = useState<DashboardReserve[]>([]);
+    const [data, setData] = useState<CustomData>({
+        data: [],
+        pagination: {
+            currentPage: page,
+            previousPage: -1,
+            nextPage: -1,
+            maxPage: -1,
+            minPage: -1,
+            itemsPerPage: Number(process.env.DEFAULT_ITEMS_PER_PAGE)
+        }
+    });
+
+    const searchAction = (r: CustomData) => {
+        setData((prevData: CustomData) => ({
+            data: [...prevData.data, ...r.data],
+            pagination: r.pagination
+        }));
+    }
+
+    const loadMoreAction = () => {
+        setPage(Number(page + 1));
+    }
+
+    const updatePageData = () => {
+        
+    }
+
+    useEffect(() => {
+        setShowMore(data.pagination.maxPage !== page);
+    }, [data]);
 
     return (
         <>
 
-            <SearchReservesEngine setData={setData} province={province} sport={sport} city={city} date={date} page={page}/>
+            <SearchReservesEngine setData={searchAction} province={province} sport={sport} city={city} date={date} page={page}/>
 
             <CreateReserveModal />
 
             <div className="reserves">
-                {data.length > 0 ? (
-                    <div className={`search-reserves`}>
-                        {data.map((reserve: DashboardReserve) => (
-                            <InfoCard reserve={reserve} key={reserve.id} />
-                        ))}
-                    </div>
+                {data.data.length > 0 ? (
+                    <>
+                        <div className={`search-reserves`}>
+                            {data.data.map((reserve: ReserveDetails) => (
+                                <InfoCard key={reserve.id} reserve={reserve} onChangeAction={updatePageData}/>
+                            ))}
+                        </div>
+                        { showMore &&
+                            <div className={`showMore`}>
+                                <button className={`btn btn-success`} onClick={loadMoreAction}>Load more</button>
+                            </div>
+                        }
+                    </>
                 ) : (
                     <div className="alert alert-danger">
                         <p>No reserves found</p>

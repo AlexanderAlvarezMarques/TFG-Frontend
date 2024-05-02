@@ -18,7 +18,18 @@ const requestJoin = async (reserveId: number) => {
     return [];
 }
 
+const cancelJoin = async (reserveId: number, userId: number) => {
+    const response = await ReserveParticipantApi.apiCancelJoin(reserveId, userId);
+
+    if (response.status === HTTP_STATUS.OK) {
+        return response.data;
+    }
+
+    return [];
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    requestJoin
+    requestJoin,
+    cancelJoin
 }

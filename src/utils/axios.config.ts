@@ -9,24 +9,23 @@ const globalAxios = axios.create({
 /// Helper function to refresh token
 const refreshToken = async () => {
     const refreshToken = localStorage.getItem('refresh_token') ?? '';
-    const response = axios.post(
+    const response = await axios.post(
         `${process.env.BACKEND_URL}/api/users/login/refresh`,
         {
             refresh_token: refreshToken
         }
     )
 
-    const { status, data } = await response;
+    const { status, data } = response;
     if (status === HTTP_STATUS.OK) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('refresh_token', data.refresh_token);
         return data.token;
+    } else {
+        localStorage.removeItem('token');
+        localStorage.removeItem('refresh_token');
+        throw new Error('Refresh token request failed');
     }
-
-    // If refresh token is not valid, logout user
-    localStorage.removeItem('token');
-    localStorage.removeItem('refresh_token');
-    throw new Error('Refresh token is not valid');
 };
 
 // Request interceptor
@@ -41,10 +40,11 @@ globalAxios.interceptors.request.use(
 
         // if (accessToken) not working || if (accessToken !== undefined) not working
         if (
-            accessToken !== null &&
-            accessToken !== "undefined" &&
-            accessToken !== undefined &&
-            accessToken !== ""
+            accessToken
+            // accessToken !== null &&
+            // accessToken !== "undefined" &&
+            // accessToken !== undefined &&
+            // accessToken !== ""
         ) {
             if (config.headers) config.headers.Authorization = "Bearer " + accessToken;
         }
@@ -71,23 +71,10 @@ globalAxios.interceptors.response.use(
         ) {
             originalRequest._retry = true;
 
-            try {
-                const newToken = await refreshToken();
-                originalRequest.headers.Authorization = `Bearer ${newToken}`;
-                originalRequest.url = originalRequest.url.replace('/api', '');
-
-                globalAxios(originalRequest)
-                    .then((response) => {
-                        return response.data;
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    })
-
-                // return axios(originalRequest);
-            } catch (refreshError) {
-                return Promise.reject(refreshError);
-            }
+            const newToken = await refreshToken();
+            originalRequest.headers.Authorization = `Bearer ${newToken}`;
+            originalRequest.url = originalRequest.url.replace('/api', '');
+            return globalAxios(originalRequest);
         }
 
         // For other error statuses, reject the request

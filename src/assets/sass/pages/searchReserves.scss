@@ -1,12 +1,25 @@
-.search-reserves {
-  width: 80%;
-  margin: 10px auto;
+.reserves {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
 
-  .card {
-    width: 19%;
+  .search-reserves {
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    .card {
+      width: 19%;
+      margin: 0 10px 10px 0;
+    }
+
+    .showMore {
+      float: right;
+    }
+
   }
 
 }
-  
+

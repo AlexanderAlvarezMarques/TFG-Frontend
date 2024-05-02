@@ -1,27 +1,78 @@
+@use "../variables";
+
 .dashboard {
 
-  section {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+
+  .navigationMenu {
+
+    background-color: variables.$pages-dashboard-sidebarNav-bg-color;
+    color: variables.$pages-dashboard-sidebarNav-font-color;
+
+    ul {
+      list-style: none;
+      width: 250px;
+      margin: 0 0 10px;
+      padding: 0;
+
+      font-size: 1.3rem;
+
+      li {
+        transition: 0.5s linear;
+        padding: 15px;
+      }
+
+      li:hover {
+        background-color: variables.$pages-dashboard-sidebarNav-bg-color;
+        color: variables.$pages-dashboard-sidebarNav-font-color;
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  .content {
     width: 80%;
-    margin: 0 auto;
-  }
+    margin: 0 auto 10px;
 
-  .dashboard-content {
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
+    .title {
+      text-align: center;
+      font-size: 2rem;
+    }
 
-  .card {
-    width: 350px;
+    .reserveList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
 
-    .card-body {
+      .card {
+        width: 20%;
+        margin: 10px 10px 0 0;
 
-      table {
-        width: 100%;
+        .content {
+          margin: 0;
+          width: 100%;
+        }
+
       }
 
     }
   }
+
+}
+
+.loading {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-size {
+  width: 5rem;
+  height: 5rem;
+  font-size: 2rem;
 }

@@ -5,8 +5,8 @@ $lg-screen: 1024px;
 $xl-screen: 1200px;
 
 // Navbar
-$navbar-bg-color: #222;
-$navbar-font-color: #EEE;
+$navbar-bg-color: #222; // RGB (34, 34, 34)
+$navbar-font-color: #EEE; // RGB (238, 238, 238)
 
 // Web
 $web-font-color: #141514;
@@ -17,3 +17,13 @@ $web-font-color: #141514;
       $modal-reserve-schedule-available: rgba(0, 255, 0, 0.5);
       $modal-reserve-schedule-unavailable: rgba(255, 0, 0, 0.5);
       $modal-reserve-schedule-available_hover: rgba(26, 120, 50, 0.8);
+
+// Footer
+  $footer-bg-color: rgba(34, 34, 34, 1.0);
+  $footer-font-color: rgba(238, 238, 238, 1.0);
+
+// Pages
+  // Dashboard page
+    // Sidebar navigation menu
+      $pages-dashboard-sidebarNav-bg-color: rgba(0, 255, 0, 0.5);
+      $pages-dashboard-sidebarNav-font-color: rgba(0, 0, 0, 1.0);

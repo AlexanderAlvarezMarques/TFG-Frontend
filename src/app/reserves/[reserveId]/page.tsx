@@ -123,11 +123,13 @@ export default function ReserveDetailsPage({params: {reserveId}}: Params) {
                         <td className={`header`}>Estado:</td>
                         <td>{reserve.status}</td>
                     </tr>
-                    <tr>
-                        <td className={`cancelReserve`} colSpan={2}>
-                            <button className={'btn btn-danger'} onClick={() => deleteReserveAction()}>Cancelar reserva</button>
-                        </td>
-                    </tr>
+                    { reserve.isOwner && (
+                        <tr>
+                            <td className={`cancelReserve`} colSpan={2}>
+                                <button className={'btn btn-danger'} onClick={() => deleteReserveAction()}>Cancelar reserva</button>
+                            </td>
+                        </tr>
+                    )}
                     </tbody>
                 </table>
             </>
@@ -222,7 +224,7 @@ export default function ReserveDetailsPage({params: {reserveId}}: Params) {
 
             const { status, data } = deleteParticipant;
             if (status === HTTP_STATUS.NOT_CONTENT) {
-                router.push("/dashboard");                                                                           
+                router.push("/dashboard");
             } else {
                 console.log("Error");
                 console.log(data);

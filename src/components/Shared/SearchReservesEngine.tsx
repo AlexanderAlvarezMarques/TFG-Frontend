@@ -66,14 +66,24 @@ export default function SearchReservesEngine(props: Props) {
     const minTime = new Date(0, 0, 0, 8, 0);
     const maxTime = new Date(0, 0, 0, 23, 0);
 
+    // Pagination
+    const [pagination, setPagination] = useState<Pagination>({
+        currentPage: props.page ?? 1,
+        previousPage: -1,
+        nextPage: -1,
+        maxPage: -1,
+        minPage: -1,
+        itemsPerPage: Number(process.env.DEFAULT_ITEMS_PER_PAGE)
+    })
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const {province, city, sport, date } = formData;
         const formattedDate = format(date, 'yyyy-MM-dd') + 'T' + format(date, 'HH:mm');
-        const queryParams = `province=${province}&city=${city}&sport=${sport}&date=${formattedDate}&page=${props.page}`;
+        const queryParams = `province=${province}&city=${city}&sport=${sport}&date=${formattedDate}` //&page=${props.page}`;
 
-        if (!props.setData) {
+        if (!props.setData && formData.city !== -1) {
             router.push(`/reserves/search?${queryParams}`);
         } else {
             searchReserves();
@@ -126,6 +136,7 @@ export default function SearchReservesEngine(props: Props) {
         }
 
         if (queryParams.sport) {
+            console.log("Query param");
             setFormData((prevFormData) => ({
                 ...prevFormData,
                 sport: queryParams.sport,
@@ -136,7 +147,7 @@ export default function SearchReservesEngine(props: Props) {
             ...prevFormData,
             province: props.province ? Number(props.province) : -1,
             city: props.city ? Number(props.city) : -1,
-            sport: props.sport ?? '',
+            sport: (props.sport && props.sport.length > 0) ? props.sport : sports[0].name,
             date: props.date ? new Date(props.date) : new Date(),
         }));
 
@@ -152,6 +163,10 @@ export default function SearchReservesEngine(props: Props) {
 
         loadReserves();
     }, []);
+
+    useEffect(() => {
+        searchReserves();
+    }, [props.page]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;

@@ -1,0 +1,52 @@
+.messagePopUp {
+
+
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+
+  border: 1px solid darkgray;
+  background-color: white;
+  border-radius: 15px;
+
+  display: flex;
+
+  animation: sliceBottom 0.5s linear;
+
+  .bandColor {
+    width: 20px;
+    border-radius: 15px 0 0 15px;
+  }
+
+  .redBand {
+    background-color: red;
+  }
+
+  .blueBand {
+    background-color: blue;
+  }
+
+  .greenBand {
+    background-color: green;
+  }
+
+  .content {
+    padding: 20px 20px;
+
+    button {
+      margin-left: 10px;
+    }
+  }
+}
+
+
+@keyframes sliceBottom {
+
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}

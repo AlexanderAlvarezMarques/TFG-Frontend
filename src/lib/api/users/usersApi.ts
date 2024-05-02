@@ -16,8 +16,11 @@ const apiGetUserDetailsByToken = async () => globalAxios.get(
     "/users/details"
 )
 
-const apiGetUserDashboard = async () => globalAxios.get(
-    "/users/dashboard"
+const apiGetUserDashboard = async (params: any) => globalAxios.get(
+    "/users/dashboard",
+    {
+        params: params
+    }
 )
 
 // eslint-disable-next-line import/no-anonymous-default-export

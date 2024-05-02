@@ -1,7 +1,9 @@
+import "@/assets/sass/components/footer.scss";
+
 export default function Footer() {
     return (
         <footer>
-            Footer
+            <p>&copy; 2024 Alexander Álvarez Marques. All rights reserved.</p>
         </footer>
     );
 }

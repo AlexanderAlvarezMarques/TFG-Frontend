@@ -6,6 +6,7 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setToken } from "@/redux/reducers/authorizationReducers"
+import {setUser} from "@/redux/reducers/userReducers";
 
 export default function SignInPage() {
 
@@ -26,7 +27,11 @@ export default function SignInPage() {
             localStorage.setItem('refresh_token', data.refresh_token)
             dispatch(setToken(data));
 
-            router.push("/dashboard")
+            const userData = await UserService.getUserDetailsByToken();
+            dispatch(setUser(userData.data));
+
+            // router.push("/dashboard")
+            router.back();
         }
 
         setLogInError(true)
