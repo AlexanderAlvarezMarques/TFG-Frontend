@@ -8,7 +8,7 @@ type Province = {
     id: number,
     name: string,
     country: Country
-    cities?: City[]
+    cities: City[]
 }
 
 type City = {

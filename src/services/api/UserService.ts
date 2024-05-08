@@ -13,7 +13,7 @@ const getUserDetailsByToken = async () => {
     return await UsersApi.apiGetUserDetailsByToken()
 }
 
-const getUserDashboard = async (type : number = 0) => {
+const getUserDashboard = async (type : number = 0, page: number, itemsPerPage: number) => {
     /*
     * 0 => ALL
     * 1 => HG => History Games
@@ -22,7 +22,13 @@ const getUserDashboard = async (type : number = 0) => {
     * 4 => AR => Active reserves
     **/
     const types = ['ALL', 'HG', 'NG', 'HR', 'AR'];
-    return await UsersApi.apiGetUserDashboard({ filter: types[type] });
+    const params = {
+        page: page,
+        itemsPerPage: itemsPerPage,
+        filter: types[type]
+    }
+
+    return await UsersApi.apiGetUserDashboard(params);
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

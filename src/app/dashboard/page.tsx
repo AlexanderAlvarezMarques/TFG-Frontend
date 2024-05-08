@@ -10,7 +10,6 @@ import { InfoCard } from "@/partials/MatchReserveInfo";
 import '@/assets/sass/pages/dashboard.scss';
 import {useRouter} from "next/navigation";
 import Loading from "@/components/Loading";
-import MessagePopUp from "@/components/MessagePopUp";
 
 interface CustomData {
     data: ReserveDetails[],
@@ -36,12 +35,13 @@ export default function DashBoardPage() {
     const pageDataInitValue: CustomData = {
         data: [],
         pagination: {
-            currentPage: -1,
+            currentPage: Number(process.env.NEXT_PUBLIC_DEFAULT_PAGE),
             previousPage: -1,
             nextPage: -1,
             maxPage: -1,
             minPage: -1,
-            itemsPerPage: -1
+            // itemsPerPage: Number(process.env.NEXT_PUBLIC_DEFAULT_ITEMS_PER_PAGE)
+            itemsPerPage: 2
         }
     }
 
@@ -125,15 +125,40 @@ export default function DashBoardPage() {
         }
     }
 
+    const requestApiData = async (page: number = Number(process.env.NEXT_PUBLIC_DEFAULT_PAGE), itemsPerPage: number = Number(process.env.NEXT_PUBLIC_DEFAULT_ITEMS_PER_PAGE)) => {
+        const apiResponse = await UserService.getUserDashboard(selectedMenu, pageData.pagination.currentPage, pageData.pagination.itemsPerPage)
+
+        const { status, data } = apiResponse;
+
+        if (status === HTTP_STATUS.OK) {
+            return data;
+        }
+    }
+
+    const loadMoreAction = async () => {
+
+        const data = await requestApiData(pageData.pagination.currentPage + 1);
+
+        console.log(data);
+
+        switch (selectedMenu) {
+            case 0:
+
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+        }
+    }
+
     useEffect(() => {
         async function requestPageData() {
-            const apiResponse = await UserService.getUserDashboard(0);
-            const { status, data } = apiResponse;
-
-            if (status === HTTP_STATUS.OK) {
-                setPageDataList(data);
-            }
-
+            const data = await requestApiData();
+            setPageDataList(data);
             setLoading(false);
         }
 
@@ -166,21 +191,7 @@ export default function DashBoardPage() {
                 setSectionTitle("Section not valid");
                 setPageData(pageDataInitValue);
         }
-    }, [selectedMenu, pageDataList, pageData, pageDataInitValue]);
-
-    const loadMoreAction = () => {
-        switch (selectedMenu) {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            default:
-        }
-    }
+    }, [selectedMenu, pageDataList, pageData]);
 
     return (
         <>

@@ -11,10 +11,8 @@ const nextConfig = {
     env: {
         BACKEND_URL: "http://localhost:9001",
         // BACKEND_URL: "http://192.168.1.43:9001"
-        PAGINATION: {
-            DEFAULT_PAGE: 1,
-            DEFAULT_ITEMS_PER_PAGE: 10
-        }
+        NEXT_PUBLIC_DEFAULT_PAGE: 1,
+        NEXT_PUBLIC_DEFAULT_ITEMS_PER_PAGE: 10
     }
 }
 

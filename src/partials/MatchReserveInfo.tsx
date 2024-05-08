@@ -22,6 +22,8 @@ type InfoCardProps = {
 export const InfoCard: React.FC<InfoCardProps> = ({ reserve , onChangeAction, checkIsParticipant = false}) => {
 
     const userData = useSelector((state: StorageState) => state.user);
+    const authentication = useSelector((state: StorageState) => state.authorization);
+    const router = useRouter();
 
     const sportCenter = reserve.court.sportCenter;
     const court = reserve.court;
@@ -42,13 +44,17 @@ export const InfoCard: React.FC<InfoCardProps> = ({ reserve , onChangeAction, ch
     const { openPopup } = useMessagePopup();
 
     const requestJoin = async (reserveId: number) => {
-        const responseData = await ReserveParticipantService.requestJoin(reserveId)
+        if (!authentication.isLogged) {
+            router.push('/signin');
+        } else {
+            const responseData = await ReserveParticipantService.requestJoin(reserveId)
 
-        if (responseData && !Array.isArray(responseData)) {
-            reserve.isParticipant = true;
-            if (onChangeAction) onChangeAction(reserve);
+            if (responseData && !Array.isArray(responseData)) {
+                reserve.isParticipant = true;
+                if (onChangeAction) onChangeAction(reserve);
 
-            openPopup("Solicitud enviada", MessageBandColorEnum.GREEN);
+                openPopup("Solicitud enviada", MessageBandColorEnum.GREEN);
+            }
         }
 
     }
@@ -57,8 +63,12 @@ export const InfoCard: React.FC<InfoCardProps> = ({ reserve , onChangeAction, ch
         const responseData = await ReserveParticipantService.cancelJoin(reserveId, userData.id);
 
         if (responseData && !Array.isArray(responseData)) {
+
+            console.log(reserve);
+
             reserve.isParticipant = false;
             reserve.participants = reserve.participants?.map((participant) => {
+                console.log(participant);
                 if (participant.participant.id === userData.id) {
                     participant.status = 'canceled';
                 }
@@ -72,9 +82,9 @@ export const InfoCard: React.FC<InfoCardProps> = ({ reserve , onChangeAction, ch
     }
 
     const cancelReserve = async (reserveId: number) => {
-        const cancelReserve = await ReserveService.deleteReserve(reserveId);
+        const responseData = await ReserveService.deleteReserve(reserveId);
 
-        if (cancelReserve.status === HTTP_STATUS.NOT_CONTENT) {
+        if (responseData && !Array.isArray(responseData)) {
             reserve.status = 'CANCELED';
             if (onChangeAction) onChangeAction(reserve);
 

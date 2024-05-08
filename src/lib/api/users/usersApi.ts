@@ -19,7 +19,7 @@ const apiGetUserDetailsByToken = async () => globalAxios.get(
 const apiGetUserDashboard = async (params: any) => globalAxios.get(
     "/users/dashboard",
     {
-        params: params
+        params
     }
 )
 

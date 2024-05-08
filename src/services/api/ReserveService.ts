@@ -1,15 +1,17 @@
 import ReserveApi from '@/lib/api/reserve/reservesApi';
 import {format} from "date-fns";
+import FormatDateTools from "@/utils/FormatDateTools";
 
-const searchReserves = async (city: number, sport: string, date: Date, page: number = 1) => {
+const searchReserves = async (city: number, sport: string, date: Date, page = process.env.DEFAULT_PAGE, itemsPerPage = process.env.DEFAULT_ITEMS_PER_PAGE) => {
 
-    const startDate = format(date, 'yyyy-MM-dd HH:mm');
+    const startDateFormatted = FormatDateTools.formatDate(date);
 
     const params = {
         city: city,
         sport: sport,
-        startDate: startDate,
+        startDate: startDateFormatted,
         page: page,
+        itemsPerPage: itemsPerPage
     };
 
     return ReserveApi.apiSearchReserves(params);
@@ -23,14 +25,14 @@ const createReserve = async (courtId: number, date: Date, hour: number, minutes:
 
     date.setHours(hour, minutes, 0, 0);
     const startDate = date;
-    const endDate = new Date(startDate.getTime() + duration * 60000);
+    const endDate = new Date(startDate.getTime() + (duration * 60000)); // 60000 => milliseconds in a minute
 
     const reserve = {
         "court": {
             "id": courtId
         },
-        "startDate": format(startDate, 'yyyy-MM-dd HH:mm'),
-        "endDate": format(endDate, 'yyyy-MM-dd HH:mm')
+        "startDate": FormatDateTools.formatDate(startDate),
+        "endDate": FormatDateTools.formatDate(endDate)
     }
 
     return ReserveApi.apiCreateReserve(reserve);

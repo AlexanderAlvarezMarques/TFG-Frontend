@@ -1,5 +1,5 @@
-import {Metadata} from "next";
-import SearchReservesEngine from "@/components/Shared/SearchReservesEngine";
+import { Metadata } from "next";
+import SearchReserves from "@/components/Shared/SearchBar/SearchReserves";
 
 export const metadata: Metadata = {
     title: "TFG - Home page",
@@ -7,10 +7,9 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
-
     return (
         <>
-            <SearchReservesEngine page={1}/>
+            <SearchReserves action={undefined} />
         </>
     );
 

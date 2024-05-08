@@ -1,13 +1,13 @@
 'use client'
 
-import SearchReservesEngine from "@/components/Shared/SearchReservesEngine";
 import { useState, useEffect } from "react";
 import { InfoCard } from "@/partials/MatchReserveInfo";
 import CreateReserveModal from "@/components/Modal/Reserve/CreateReserveModal";
+import SearchReserves from "@/components/Shared/SearchBar/SearchReserves";
 
 // CSS
 import "@/assets/sass/pages/searchReserves.scss";
-import {log} from "node:util";
+import Loading from "@/components/Loading";
 
 type Params = {
     searchParams?: {
@@ -17,6 +17,7 @@ type Params = {
         date: string,
         time: string,
         page: number,
+        itemsPerPage: number
     }
 }
 
@@ -44,70 +45,97 @@ function getParams(params: Params) {
 export default function SearchReservesPage (params: Params) {
 
     // Params
-    const {province, city, sport, date} = getParams(params);
     const [showMore, setShowMore] = useState<boolean>(false);
 
-    // Pagination
-    const [page, setPage] = useState<number>(params.searchParams?.page ?? 1);
-
-    // Hooks
-    const [data, setData] = useState<CustomData>({
-        data: [],
-        pagination: {
-            currentPage: page,
-            previousPage: -1,
-            nextPage: -1,
-            maxPage: -1,
-            minPage: -1,
-            itemsPerPage: Number(process.env.DEFAULT_ITEMS_PER_PAGE)
-        }
+    // Data
+    const [reserves, setReserves] = useState<ReserveDetails[]>([]);
+    const [pagination, setPagination] = useState<Pagination>({
+        currentPage: params.searchParams?.page ?? Number(process.env.NEXT_PUBLIC_DEFAULT_PAGE),
+        previousPage: -1,
+        nextPage: -1,
+        maxPage: -1,
+        minPage: -1,
+        itemsPerPage: params.searchParams?.itemsPerPage ?? Number(process.env.NEXT_PUBLIC_DEFAULT_ITEMS_PER_PAGE)
     });
 
-    const searchAction = (r: CustomData) => {
-        setData((prevData: CustomData) => ({
-            data: [...prevData.data, ...r.data],
-            pagination: r.pagination
+    const [isLoading, setIsLoading] = useState(false);
+    const [firstRender, setFirstRender] = useState(true);
+
+    const loadMoreAction = () => {
+        setPagination((prevState) => ({
+            ...prevState,
+            currentPage: prevState.currentPage + 1
         }));
     }
 
-    const loadMoreAction = () => {
-        setPage(Number(page + 1));
+    const updatePageData = (data: SearchResult) => {
+        if (data) {
+            const newReserves = data.data;
+            const newPagination = data.pagination;
+
+            newReserves.map((reserve) => {
+                reserves[reserve.id] = reserve;
+            });
+
+            setPagination(newPagination);
+            setIsLoading(false);
+        } else {
+            setReserves([]);
+            if (!firstRender) setIsLoading(true);
+        }
     }
 
-    const updatePageData = () => {
-        
+    const updateReserveData = (data: ReserveDetails) => {
+        reserves[data.id] = data;
     }
 
     useEffect(() => {
-        setShowMore(data.pagination.maxPage !== page);
-    }, [data]);
+        setShowMore(pagination.maxPage !== pagination.currentPage);
+    }, [pagination]);
+
+    useEffect(() => {
+        setFirstRender(false);
+    }, []);
 
     return (
         <>
+            <SearchReserves page={pagination.currentPage} itemsPerPage={pagination.itemsPerPage} action={updatePageData}/>
 
-            <SearchReservesEngine setData={searchAction} province={province} sport={sport} city={city} date={date} page={page}/>
+            <CreateReserveModal/>
 
-            <CreateReserveModal />
+            <div className={`reserves ${isLoading ? `loading` : ``}`}>
 
-            <div className="reserves">
-                {data.data.length > 0 ? (
-                    <>
-                        <div className={`search-reserves`}>
-                            {data.data.map((reserve: ReserveDetails) => (
-                                <InfoCard key={reserve.id} reserve={reserve} onChangeAction={updatePageData}/>
-                            ))}
-                        </div>
-                        { showMore &&
-                            <div className={`showMore`}>
-                                <button className={`btn btn-success`} onClick={loadMoreAction}>Load more</button>
-                            </div>
-                        }
-                    </>
-                ) : (
-                    <div className="alert alert-danger">
-                        <p>No reserves found</p>
-                    </div>
-                )}
+                {
+                    isLoading ?
+                        <Loading /> : (
+                            <>
+                                {reserves.length > 0 ? (
+                                    <>
+                                        <div className={`search-reserves`}>
+                                            {
+                                                reserves.map((reserve) =>
+                                                   <InfoCard
+                                                        key={reserve.id}
+                                                        reserve={reserve}
+                                                        onChangeAction={updateReserveData}
+                                                   />
+                                                )
+                                            }
+                                        </div>
+                                        {showMore &&
+                                            <div className={`showMore`}>
+                                                <button className={`btn btn-success`} onClick={loadMoreAction}>Load more</button>
+                                            </div>
+                                        }
+                                    </>
+                                ) : (
+                                    <div className="alert alert-danger">
+                                        <p>No reserves found</p>
+                                    </div>
+                                )}
+                            </>
+                        )
+                }
 
             </div>
         </>

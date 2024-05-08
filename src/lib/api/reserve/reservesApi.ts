@@ -3,7 +3,7 @@ import globalAxios from "@/utils/axios.config";
 const endPoint: string = "/reserves";
 
 const apiSearchReserves = async (params: any) => globalAxios.get(
-    `${endPoint}/search?`,
+    `${endPoint}/search`,
     { params }
 );
 

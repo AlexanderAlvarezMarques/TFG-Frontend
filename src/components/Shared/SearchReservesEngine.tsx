@@ -177,10 +177,10 @@ export default function SearchReservesEngine(props: Props) {
         const { value } = e.target;
         const { provinces } = dataList;
 
-        const selectedProvince = provinces.find((province) => province.id === parseInt(value, 10));
+        const selectedProvince = provinces.find((province) => province.id === parseInt(value));
         if (selectedProvince) {
 
-            const newCities = selectedProvince.cities || [];
+            const newCities = selectedProvince.cities;
 
             setFormData((prevFormData) => ({
                 ...prevFormData,
