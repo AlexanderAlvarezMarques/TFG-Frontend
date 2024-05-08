@@ -1,3 +1,5 @@
+'use client'
+
 import MasterApiTool from "@/utils/api/MasterApiTool";
 
 type MasterData = {

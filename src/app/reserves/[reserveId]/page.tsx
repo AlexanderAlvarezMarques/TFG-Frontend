@@ -48,7 +48,7 @@ export default function ReserveDetailsPage({params: {reserveId}}: Params) {
         }
 
         requestReserveData();
-    }, []);
+    }, [reserveId]);
 
     if (error) return (
         <div className={`reserve`}>

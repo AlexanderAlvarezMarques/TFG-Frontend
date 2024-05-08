@@ -27,7 +27,7 @@ const DashboardEngine: React.FC<DashboardEngineProps> = ({ searchType, page, ite
         };
 
         loadDashboard();
-    }, [searchType, page, itemsPerPage]);
+    }, [searchType, page, itemsPerPage, action, openPopup]);
 
     return null;
 };

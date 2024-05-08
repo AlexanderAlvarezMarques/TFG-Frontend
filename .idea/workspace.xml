@@ -6,20 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="8146642f-6adc-48aa-a85a-d7947569cc57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/reserves/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reserves/search/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/searchReserves.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/searchReserves.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MessagePopUp.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchReservesEngine.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shared/SearchReservesEngine.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/api/reserve/reservesApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/reserve/reservesApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/api/users/usersApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/users/usersApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/_page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/reserves/[reserveId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reserves/[reserveId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/test/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/test/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/LoadUserData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/LoadUserData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modal/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modal/Reserve/CreateReserveModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/Reserve/CreateReserveModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchEngine.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchEngine.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchReserves.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchReserves.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchReservesEngine.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/Dashboard/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/Dashboard/DashboardEngine.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/Dashboard/DashboardEngine.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/partials/MatchReserveInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/partials/MatchReserveInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api/ReserveService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/ReserveService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api/UserService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/UserService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/master.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/master.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/LocalStorageTools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LocalStorageTools.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/axios.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/axios.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +225,7 @@
       <workItem from="1713957218364" duration="13889000" />
       <workItem from="1714646849198" duration="48425000" />
       <workItem from="1715004235761" duration="13975000" />
-      <workItem from="1715164221340" duration="4300000" />
+      <workItem from="1715164221340" duration="12869000" />
     </task>
     <servers />
   </component>

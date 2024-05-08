@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import SearchForm from "@/components/Shared/SearchBar/SearchForm";
 
@@ -9,8 +9,8 @@ import SearchEngine from "@/components/Shared/SearchBar/SearchEngine";
 import FormatDateTools from "@/utils/FormatDateTools";
 
 interface SearchReserveProps {
-    page: number
-    itemsPerPage: number
+    page?: number
+    itemsPerPage?: number
     action: Function|undefined
 }
 
@@ -23,7 +23,7 @@ const SearchReserves: React.FC<SearchReserveProps> = ({page, itemsPerPage, actio
     const province = Number(queryParams.get('province'));
     const city = Number(queryParams.get('city'));
     const dateString = queryParams.get('date') ?? 'now';
-    const date = dateString === 'now' ? new Date() : new Date(dateString);
+    const date = useMemo(() => dateString === 'now' ? new Date() : new Date(dateString), [dateString]);
 
     const [searchValues, setSearchValues] = useState<SearchEngineParams>({
         province: province === 0 ? -1 : province,
@@ -52,11 +52,11 @@ const SearchReserves: React.FC<SearchReserveProps> = ({page, itemsPerPage, actio
             }
             setIsFirstRender(false);
         }
-    }, [searchValues]);
+    }, [action, date, isFirstRender, router, searchValues]);
 
     useEffect(() => {
         if (action) action(searchResults);
-    }, [searchResults]);
+    }, [action, searchResults]);
 
     return (
         <div className={`searchReserves`}>

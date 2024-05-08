@@ -1,3 +1,5 @@
+'use client'
+
 import React, {FormEvent, useEffect, useState} from "react";
 import DatePicker from "react-datepicker";
 
@@ -107,7 +109,7 @@ const SearchForm: React.FC<SearchEngineParams> = (
                     cities: selectedProvince.cities
                 }));
         }
-    }, []);
+    }, [formData.province, options.provinces]);
 
     return (
         <form onSubmit={submitAction}>

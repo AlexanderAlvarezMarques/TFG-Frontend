@@ -19,7 +19,6 @@ import Footer from '@/components/Footer/Footer';
 import {Provider, useDispatch} from "react-redux";
 import store from "@/redux/store";
 import LocalStorageTools from "@/utils/LocalStorageTools";
-import messagePopUp from "@/components/MessagePopUp";
 import {MessagePopupProvider} from "@/components/Context/MessagePopupContext";
 
 export default function BaseLayout({ children }: { children: React.ReactNode }) {

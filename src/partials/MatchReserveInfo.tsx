@@ -2,11 +2,12 @@ import React from 'react';
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
-import { HTTP_STATUS } from "@/enums/HttpStatus";
 import Link from "next/link";
 
 import Image from "next/image";
 import paddleImage from "../assets/images/sports/paddle_001.jpg";
+import tennisImage from "../assets/images/sports/tennis_001.jpg";
+import footballImage from "../assets/images/sports/football_001.jpg";
 
 import ReserveParticipantService from "@/services/api/ReserveParticipantService";
 import ReserveService from "@/services/api/ReserveService";
@@ -108,7 +109,9 @@ export const InfoCard: React.FC<InfoCardProps> = ({ reserve , onChangeAction, ch
                 {/* TODO: Add image of sport center or sport designed to this match. */}
                 <div className="image">
                     <Image
-                        src={paddleImage}
+                        src={reserve.sport === 'PADDLE' ? paddleImage : (
+                            reserve.sport === 'TENNIS' ? tennisImage : footballImage
+                        )}
                         alt={`Sport center image`}
                         width={200}
                         height={200}

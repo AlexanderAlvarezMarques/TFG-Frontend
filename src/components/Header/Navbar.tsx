@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 export const Navbar = () => {
 
     const auth: AuthToken = useSelector((state: StorageState) => state.authorization);
-    const token = localStorage.getItem('token');
 
     return (
         <nav className={styles.navbar}>
@@ -23,7 +22,7 @@ export const Navbar = () => {
             </ul>
             <ul>
                 {
-                    !auth.isLogged && !token ?
+                    !auth.isLogged ?
                     (
                         <>
                             <li>

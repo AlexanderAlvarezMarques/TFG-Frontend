@@ -87,7 +87,7 @@ const CreateReserveModal = () => {
             setCities([]);
             setCity(-1);
         }
-    }, [province]);
+    }, [localStorageData?.provinces, province]);
 
     useEffect(() => {
         const cities = localStorageData?.cities.filter((c: City) => c.id == city) ?? [];
@@ -104,7 +104,7 @@ const CreateReserveModal = () => {
             setSportCenters([]);
             setSportCenter(-1);
         }
-    }, [city]);
+    }, [city, localStorageData?.cities]);
 
     useEffect(() => {
         const getSports = async () => {

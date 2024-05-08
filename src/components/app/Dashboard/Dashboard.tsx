@@ -35,59 +35,51 @@ const Dashboard: React.FC<DashboardProps> = ({searchType, page, itemsPerPage, ac
     const [nextMatches, setNextMatches] = useState<DashboardData>(initValue)
 
     const updateIndividualData = (currentData: DashboardData, newData: DashboardData) => {
-        newData.data.map((reserve) => {
-            currentData.data[reserve.id] = reserve;
-        })
+        // Create a copy of the current data object
+        const updatedData: DashboardData = { ...currentData };
 
-        currentData.pagination = newData.pagination;
+        // Update the data array with the new data
+        updatedData.data = [...updatedData.data, ...newData.data];
 
-        return currentData;
-    }
+        // Update the pagination object with the new pagination
+        updatedData.pagination = newData.pagination;
 
-    const updateAllData = (newData: any) => {
-        setActiveReserves(newData.reserves.active);
-        setPreviousReserves(newData.reserves.history);
-        setNextMatches(newData.games.next);
-        setPreviousMatches(newData.games.history);
-    }
+        return updatedData;
+    };
 
     const updateData = (data: DashboardData) => {
         switch (searchType) {
-            case 1:
-                setNextMatches(updateIndividualData(nextMatches, data));
-                break;
             case 2:
-                setPreviousMatches(updateIndividualData(previousMatches, data));
+                setNextMatches(prevState => {
+                    const updatedData = updateIndividualData(prevState, data);
+                    action(updatedData);
+                    return updatedData;
+                });
                 break;
-            case 3:
-                setActiveReserves(updateIndividualData(activeReserves, data));
+            case 1:
+                setPreviousMatches(prevState => {
+                    const updatedData = updateIndividualData(prevState, data);
+                    action(updatedData);
+                    return updatedData;
+                });
                 break;
             case 4:
-                setPreviousReserves(updateIndividualData(previousReserves, data));
-                break;
-            default:
-                updateAllData(data);
-        }
-    }
-
-    useEffect(() => {
-        switch (searchType) {
-            case 0:
-                action(nextMatches);
-                break;
-            case 1:
-                action(previousMatches);
-                break;
-            case 2:
-                action(activeReserves);
+                setActiveReserves(prevState => {
+                    const updatedData = updateIndividualData(prevState, data);
+                    action(updatedData);
+                    return updatedData;
+                });
                 break;
             case 3:
-                action(previousReserves);
+                setPreviousReserves(prevState => {
+                    const updatedData = updateIndividualData(prevState, data);
+                    action(updatedData);
+                    return updatedData;
+                });
                 break;
-            default:
-                action();
         }
-    }, [activeReserves, nextMatches, previousMatches, previousReserves, searchType]);
+    };
+
 
     return <DashboardEngine searchType={searchType} page={page} itemsPerPage={itemsPerPage} action={updateData} />;
 }

@@ -1,8 +1,9 @@
+'use client'
+
 import {useDispatch, useSelector} from "react-redux";
 import UserService from "@/services/api/UserService";
 import {HTTP_STATUS} from "@/enums/HttpStatus";
 import {setUser} from "@/redux/reducers/userReducers";
-import {jwtDecode} from "jwt-decode";
 import {setToken} from "@/redux/reducers/authorizationReducers";
 
 export default function LoadUserData() {

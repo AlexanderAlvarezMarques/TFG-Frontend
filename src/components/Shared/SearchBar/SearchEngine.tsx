@@ -39,7 +39,7 @@ const SearchEngine: React.FC<SearchEngineProps> = (
             searchReserves();
         }
 
-    }, [province, city, date, sport, page, itemsPerPage]);
+    }, [province, city, date, sport, page, itemsPerPage, action]);
 
     return null;
 }
