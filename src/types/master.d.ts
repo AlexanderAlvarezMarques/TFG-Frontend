@@ -21,3 +21,10 @@ type City = {
 type Sport = {
     name: string
 }
+
+type MasterStorage = {
+    provinces: Province[],
+    cities: City[],
+    sports: Sport[],
+    lastUpdate: number|null
+}

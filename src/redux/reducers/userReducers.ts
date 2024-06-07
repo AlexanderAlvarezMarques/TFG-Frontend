@@ -6,7 +6,10 @@ const initialState: User = {
     surname: "",
     username: "",
     email: "",
-    language: ""
+    language: "",
+    userTelephoneNumbers: [],
+    isAdmin: false,
+    isPlayer: false
 }
 
 const userSlice = createSlice({
@@ -14,13 +17,15 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => {
-            const { id, username, email, language, name, surname } = action.payload
+            const { id, username, email, language, name, surname, isAdmin, isPlayer } = action.payload
             state.id = id
             state.username = username
             state.email = email
             state.language = language
             state.name = name
             state.surname = surname
+            state.isAdmin = isAdmin
+            state.isPlayer = isPlayer
         },
         clearUser: state => {
             Object.assign(state, initialState);

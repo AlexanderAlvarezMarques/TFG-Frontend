@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { HTTP_STATUS } from "@/enums/HttpStatus";
+import HTTP_STATUS from "@/enum/HttpStatusEnum";
 
 const globalAxios = axios.create({
-    baseURL: process.env.BACKEND_URL,
+    // baseURL: process.env.BACKEND_URL,
+    baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
 });
 
 /// Helper function to refresh token
@@ -10,7 +11,7 @@ const refreshToken = async () => {
     if (typeof  window !== 'undefined') {
         const refreshToken = localStorage.getItem('refresh_token') ?? '';
         const response = await axios.post(
-            `${process.env.BACKEND_URL}/api/users/login/refresh`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/login/refresh`,
             {
                 refresh_token: refreshToken
             }

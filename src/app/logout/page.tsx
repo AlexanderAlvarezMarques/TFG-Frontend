@@ -1,22 +1,27 @@
-'use client'
+"use client"
 
 import {useRouter} from "next/navigation";
-import {headers} from "next/headers";
 import {useDispatch} from "react-redux";
-import { clearToken } from "@/redux/reducers/authorizationReducers";
+import {clearToken} from "@/redux/reducers/authorizationReducers";
 import {clearUser} from "@/redux/reducers/userReducers";
+import {useEffect} from "react";
 
-export default function LogoutPage() {
+const LogoutPage = () => {
 
     const router = useRouter();
     const dispatch = useDispatch();
 
-    localStorage.removeItem('token');
-    localStorage.removeItem('refresh_token');
+    useEffect(() => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('refresh_token');
 
-    dispatch(clearToken());
-    dispatch(clearUser());
+        dispatch(clearToken());
+        dispatch(clearUser());
 
-    router.push('/');
+        router.push('/');
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 }
+
+export default LogoutPage;

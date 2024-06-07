@@ -1,21 +1,20 @@
 'use client'
 
-import React, {useCallback, useEffect, useState} from "react";
-import Loading from "@/components/Loading";
-import { InfoCard } from "@/partials/MatchReserveInfo";
-import Dashboard from "@/components/app/Dashboard/Dashboard";
+import React, {useEffect, useState} from "react";
+import Loading from "@/components/shared/Loading";
+import Dashboard from "@/components/app/dashboard/Dashboard";
+
+import ReserveCard from "@/components/shared/ReserveData";
+import { SearchReserveResult } from "@/types/reserves";
+import { UserDashboardFilterEnum, UserDashboardFilterEnumType } from "@/enum/UserDashboardQueryParamEnum";
 
 import '@/assets/sass/pages/dashboard.scss';
-
-interface PageDataType {
-    data: ReserveDetails[],
-    pagination: Pagination
-}
+import CreateReserveModal from "@/components/modal/CreateReserveModal/CreateReserveModal";
 
 export default function DashboardPage() {
 
-    const [searchType, setSearchType] = useState<number>(2);
-    const [pageData, setPageData] = useState<PageDataType>({
+    const [selectedMenu, setSelectedMenu] = useState<UserDashboardFilterEnumType>(UserDashboardFilterEnum.ACTIVE_GAMES);
+    const [pageData, setPageData] = useState<SearchReserveResult>({
         data: [],
         pagination: {
             currentPage: 1,
@@ -30,9 +29,9 @@ export default function DashboardPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [sectionTitle, setSectionTitle] = useState("Próximos partidos");
     const [page, setPage] = useState(Number(process.env.NEXT_PUBLIC_DEFAULT_PAGE));
-    const itemsPerPage = 2;//Number(process.env.NEXT_PUBLIC_DEFAULT_ITEMS_PER_PAGE);
+    const itemsPerPage = Number(process.env.NEXT_PUBLIC_DEFAULT_ITEMS_PER_PAGE);
 
-    const updatePageData = (data: PageDataType) => {
+    const updatePageData = (data: SearchReserveResult) => {
         setPageData(data);
         setIsLoading(false);
     };
@@ -42,45 +41,51 @@ export default function DashboardPage() {
         setPage(pageData.pagination.currentPage + 1);
     }
 
+    const handleReserveChange = () => {
+        setIsLoading(true);
+        setPage(page); // Trigger a rerender by updating the state
+        // setIsLoading(false);
+    };
+
     useEffect(() => {
 
         setIsLoading(true);
 
-        switch (searchType) {
-            case 1:
-                setSectionTitle("Partidos anteriores");
-                break;
-            case 2:
+        switch (selectedMenu) {
+            case UserDashboardFilterEnum.ACTIVE_GAMES:
                 setSectionTitle("Próximos partidos");
                 break;
-            case 3:
-                setSectionTitle("Reservas anteriores");
+            case UserDashboardFilterEnum.HISTORY_GAMES:
+                setSectionTitle("Partidos anteriores");
                 break;
-            case 4:
+            case UserDashboardFilterEnum.ACTIVE_RESERVES:
                 setSectionTitle("Reservas activas");
+                break;
+            case UserDashboardFilterEnum.HISTORY_RESERVES:
+                setSectionTitle("Reservas anteriores");
                 break;
             default:
                 setSectionTitle("");
         }
-    }, [searchType]);
+    }, [selectedMenu]);
+
+    useEffect(() => {
+        if (isLoading && pageData.data.length > 0) {
+            setIsLoading(false); // Reset isLoading when data is loaded
+        }
+    }, [pageData, isLoading]);
 
     return (
         <>
-
-            <Dashboard
-                searchType={searchType}
-                page={page}
-                itemsPerPage={itemsPerPage}
-                action={updatePageData}
-            />
+            <Dashboard selectedMenu={selectedMenu} page={page} itemsPerPage={itemsPerPage} action={updatePageData} />
 
             <div className="dashboard">
                 <nav className={`navigationMenu`}>
                     <ul>
-                        <li onClick={() => setSearchType(2)}>Próximos partidos</li>
-                        <li onClick={() => setSearchType(1)}>Partidos anteriores</li>
-                        <li onClick={() => setSearchType(4)}>Reservas activas</li>
-                        <li onClick={() => setSearchType(3)}>Reservas anteriores</li>
+                        <li onClick={() => setSelectedMenu(UserDashboardFilterEnum.ACTIVE_GAMES)}>Próximos partidos</li>
+                        <li onClick={() => setSelectedMenu(UserDashboardFilterEnum.HISTORY_GAMES)}>Partidos anteriores</li>
+                        <li onClick={() => setSelectedMenu(UserDashboardFilterEnum.ACTIVE_RESERVES)}>Reservas activas</li>
+                        <li onClick={() => setSelectedMenu(UserDashboardFilterEnum.HISTORY_RESERVES)}>Reservas anteriores</li>
                     </ul>
                 </nav>
                 {
@@ -92,15 +97,15 @@ export default function DashboardPage() {
                                         <h1 className="title">{sectionTitle}</h1>
                                         <div className={`reserveList`}>
                                             {
-                                                pageData?.data.map((reserve) => (
-                                                    <InfoCard key={reserve.id} reserve={reserve} onChangeAction={() => {}} checkIsParticipant={true} />
+                                                pageData.data.map((reserve) => (
+                                                    <ReserveCard key={reserve.id} reserve={reserve} onChangeAction={handleReserveChange} checkIsParticipant={true} />
                                                 ))
                                             }
                                         </div>
                                     </section>
                                 </div>
                                 {
-                                    pageData?.pagination && pageData.pagination.currentPage < pageData.pagination.maxPage &&
+                                    pageData.pagination.currentPage < pageData.pagination.maxPage &&
                                     <div className={`loadMore`}>
                                         <button className={`btn btn-primary`} onClick={loadMoreAction}>Load more
                                         </button>

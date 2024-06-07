@@ -1,16 +1,13 @@
-import { Metadata } from "next";
-import SearchReserves from "@/components/Shared/SearchBar/SearchReserves";
+import React from 'react';
+import {Suspense} from "react";
+import SearchReserves from "@/components/shared/SearchBar/SearchReserves";
 
-export const metadata: Metadata = {
-    title: "TFG - Home page",
-    description: "TFG by alexander alvarez"
-}
-
-export default function HomePage() {
-    return (
-        <>
-            <SearchReserves action={undefined} />
-        </>
-    );
-
+export default function Home() {
+  return (
+    <>
+        <Suspense>
+            <SearchReserves page={1} itemsPerPage={10} action={undefined} />
+        </Suspense>
+    </>
+  );
 }

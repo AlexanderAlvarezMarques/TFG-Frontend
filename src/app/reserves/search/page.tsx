@@ -1,65 +1,56 @@
 'use client'
 
-import { useState, useEffect } from "react";
-import { InfoCard } from "@/partials/MatchReserveInfo";
-import CreateReserveModal from "@/components/Modal/Reserve/CreateReserveModal";
-import SearchReserves from "@/components/Shared/SearchBar/SearchReserves";
+import {Suspense, useEffect, useState} from "react";
+import SearchReserves from "@/components/shared/SearchBar/SearchReserves";
+import {Reserve, SearchReserveResult} from "@/types/reserves";
+import Loading from "@/components/shared/Loading";
+import ReserveCard from "@/components/shared/ReserveData";
 
 // CSS
 import "@/assets/sass/pages/searchReserves.scss";
-import Loading from "@/components/Loading";
 
-type Params = {
-    searchParams?: {
-        province: string,
-        city: string,
-        sport: string,
-        date: string,
-        time: string,
-        page: number,
-        itemsPerPage: number
-    }
-}
+const SearchReservesPage = () => {
 
-interface CustomData {
-    data: ReserveDetails[];
-    pagination: Pagination
-}
-
-function getParams(params: Params) {
-    const province: string = params.searchParams?.province ?? "";
-    const city: string = params.searchParams?.city ?? "";
-    const sport: string = params.searchParams?.sport ?? "";
-    let date: string | Date = params.searchParams?.date ?? "";
-    let time: string = params.searchParams?.time ?? "";
-
-    date = !date ? new Date() : new Date(date);
-    const hours = time.split(":")[0];
-    const minutes = time.split(":")[1];
-    date.setHours(hours ? parseInt(hours) : date.getHours());
-    date.setMinutes(minutes ? parseInt(minutes) : date.getMinutes());
-
-    return {province, city, sport, date};
-}
-
-export default function SearchReservesPage (params: Params) {
-
-    // Params
-    const [showMore, setShowMore] = useState<boolean>(false);
-
-    // Data
-    const [reserves, setReserves] = useState<ReserveDetails[]>([]);
+    const [reserves, setReserves] = useState<Reserve[]>([]);
     const [pagination, setPagination] = useState<Pagination>({
-        currentPage: params.searchParams?.page ?? Number(process.env.NEXT_PUBLIC_DEFAULT_PAGE),
-        previousPage: -1,
-        nextPage: -1,
+        currentPage: Number(process.env.NEXT_PUBLIC_DEFAULT_PAGE),
+        itemsPerPage: Number(process.env.NEXT_PUBLIC_DEFAULT_ITEMS_PER_PAGE),
         maxPage: -1,
         minPage: -1,
-        itemsPerPage: params.searchParams?.itemsPerPage ?? Number(process.env.NEXT_PUBLIC_DEFAULT_ITEMS_PER_PAGE)
+        nextPage: -1,
+        previousPage: -1
     });
 
+    const [showMore, setShowMore] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [firstRender, setFirstRender] = useState(true);
+
+    const updatePageData = (data: SearchReserveResult) => {
+        if (!data) {
+            setReserves([]);
+            setIsLoading(true);
+        } else {
+            const newReserves = data.data;
+            const newPagination = data.pagination;
+
+            setPagination(newPagination);
+            newReserves.map(reserve => {
+                reserves[reserve.id] = reserve;
+            });
+            setIsLoading(false);
+        }
+    }
+
+    const updateReserveData = (reserve: Reserve) => {
+        setReserves(prevReserves => {
+            return prevReserves.map(r => {
+                if (r.id === reserve.id) {
+                    return { ...r, ...reserve };
+                }
+                return r;
+            });
+        });
+    }
+
 
     const loadMoreAction = () => {
         setPagination((prevState) => ({
@@ -68,63 +59,39 @@ export default function SearchReservesPage (params: Params) {
         }));
     }
 
-    const updatePageData = (data: SearchResult) => {
-        if (data) {
-            const newReserves = data.data;
-            const newPagination = data.pagination;
-
-            newReserves.map((reserve) => {
-                reserves[reserve.id] = reserve;
-            });
-
-            setPagination(newPagination);
-            setIsLoading(false);
-        } else {
-            setReserves([]);
-            if (!firstRender) setIsLoading(true);
-        }
-    }
-
-    const updateReserveData = (data: ReserveDetails) => {
-        reserves[data.id] = data;
-    }
-
     useEffect(() => {
         setShowMore(pagination.maxPage !== pagination.currentPage);
     }, [pagination]);
 
-    useEffect(() => {
-        setFirstRender(false);
-    }, []);
-
     return (
         <>
-            <SearchReserves page={pagination.currentPage} itemsPerPage={pagination.itemsPerPage} action={updatePageData}/>
-
-            <CreateReserveModal/>
+            <Suspense>
+                <SearchReserves page={pagination.currentPage} itemsPerPage={pagination.itemsPerPage} action={updatePageData} />
+            </Suspense>
 
             <div className={`reserves ${isLoading ? `loading` : ``}`}>
 
                 {
                     isLoading ?
-                        <Loading /> : (
+                        <Loading/> : (
                             <>
                                 {reserves.length > 0 ? (
                                     <>
                                         <div className={`search-reserves`}>
                                             {
                                                 reserves.map((reserve) =>
-                                                   <InfoCard
+                                                    <ReserveCard
                                                         key={reserve.id}
                                                         reserve={reserve}
                                                         onChangeAction={updateReserveData}
-                                                   />
+                                                    />
                                                 )
                                             }
                                         </div>
                                         {showMore &&
                                             <div className={`showMore`}>
-                                                <button className={`btn btn-success`} onClick={loadMoreAction}>Load more</button>
+                                                <button className={`btn btn-success`} onClick={loadMoreAction}>Load more
+                                                </button>
                                             </div>
                                         }
                                     </>
@@ -139,5 +106,8 @@ export default function SearchReservesPage (params: Params) {
 
             </div>
         </>
-    );
-};
+    )
+
+}
+
+export default SearchReservesPage;

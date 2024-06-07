@@ -4,28 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8146642f-6adc-48aa-a85a-d7947569cc57" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="7e3f032d-8bdc-4232-b4fd-24060a0667aa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/_page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/not-found.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/reserves/[reserveId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reserves/[reserveId]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/test/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/test/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/LoadUserData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/LoadUserData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/Modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal/Reserve/CreateReserveModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/Reserve/CreateReserveModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchEngine.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchEngine.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchReserves.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shared/SearchBar/SearchReserves.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Shared/SearchReservesEngine.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/Dashboard/DashboardEngine.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/Dashboard/DashboardEngine.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/partials/MatchReserveInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/partials/MatchReserveInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/LocalStorageTools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LocalStorageTools.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/axios.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/axios.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,15 +20,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
-        <option value="com.haulmont.rcb.palette" />
-        <option value="com.haulmont.rcb.previews" />
-        <option value="com.haulmont.rcb.index" />
-        <option value="com.haulmont.rcb.useInitial" />
-        <option value="com.haulmont.rcb.README" />
-        <option value="CSS File" />
-        <option value="SCSS File" />
         <option value="TypeScript File" />
+        <option value="package.json" />
+        <option value="SCSS File" />
         <option value="TypeScript JSX File" />
       </list>
     </option>
@@ -54,13 +33,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
+  &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2RINCausUwkohjRdwZWuK8tlDRT" />
+  <component name="ProjectId" id="2gGYMwop31nqDcZGAM7iP1D0wpV" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -68,34 +44,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Node.js/Chrome.TFG.executor": "Debug",
-    "ReactCreateComponentLastSelected": "functionDeclarationComponent",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "full.screen.before.presentation.mode": "true",
-    "git-widget-placeholder": "bug/UserDashboard",
-    "last_opened_file_path": "/home/alexander/Documentos/University/TFG/app/frontend/src/assets/images/sportCenters",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "ts.external.directory.path": "/home/alexander/Documentos/University/TFG/app/frontend/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.TFG.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/alexander/Documentos/University/TFG/app/frontend_v2/src/app/matches&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/alexander/Documentos/University/TFG/app/frontend_v2/node_modules/typescript/lib&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
-        <entry key="com.haulmont.rcb.reactComponents" value="false" />
-        <entry key="com.haulmont.rcb.reactInspector" value="false" />
-        <entry key="com.haulmont.rcb.storybook" value="false" />
         <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
         <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
         <entry key="com.intellij.reactbuddy.storybook" value="false" />
@@ -104,146 +72,51 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets/images/sportCenters" />
-      <recent name="$PROJECT_DIR$/src/enums" />
-      <recent name="$PROJECT_DIR$/src/components/Shared" />
-      <recent name="$PROJECT_DIR$/src/redux/reducers" />
+      <recent name="$PROJECT_DIR$/src/app/matches" />
+      <recent name="$PROJECT_DIR$/.." />
+      <recent name="$PROJECT_DIR$/src/components/modal/CreateReserveModal" />
+      <recent name="$PROJECT_DIR$/src/enum" />
+      <recent name="$PROJECT_DIR$/src/utils" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets/images/sports" />
-      <recent name="$PROJECT_DIR$/src/lib/api/sportCenter" />
-      <recent name="$PROJECT_DIR$/src/assets/sass/components" />
-      <recent name="$PROJECT_DIR$/src/assets/sass" />
-      <recent name="$PROJECT_DIR$/src/components/Footer" />
+      <recent name="$PROJECT_DIR$/src/components/modal" />
+      <recent name="$PROJECT_DIR$/src/assets/sass/partials" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="TFG" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8146642f-6adc-48aa-a85a-d7947569cc57" name="Changes" comment="" />
-      <created>1686933508916</created>
+      <changelist id="7e3f032d-8bdc-4232-b4fd-24060a0667aa" name="Changes" comment="" />
+      <created>1715325337093</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1686933508916</updated>
-      <workItem from="1686933509870" duration="134000" />
-      <workItem from="1686933649697" duration="5612000" />
-      <workItem from="1686944600772" duration="13708000" />
-      <workItem from="1687038667737" duration="2282000" />
-      <workItem from="1687183275178" duration="6492000" />
-      <workItem from="1687374048758" duration="653000" />
-      <workItem from="1687374710052" duration="3572000" />
-      <workItem from="1687514715323" duration="9616000" />
-      <workItem from="1687526667322" duration="2706000" />
-      <workItem from="1687797581366" duration="8666000" />
-      <workItem from="1687862811474" duration="6838000" />
-      <workItem from="1687948342771" duration="62000" />
-      <workItem from="1687949471191" duration="195000" />
-      <workItem from="1688724974371" duration="6917000" />
-      <workItem from="1695034948763" duration="208000" />
-      <workItem from="1695035162548" duration="254000" />
-      <workItem from="1695036977227" duration="8216000" />
-      <workItem from="1695375894209" duration="17089000" />
-      <workItem from="1695797686849" duration="4775000" />
-      <workItem from="1696924143207" duration="2778000" />
-      <workItem from="1696936203158" duration="11205000" />
-      <workItem from="1697055970863" duration="13155000" />
-      <workItem from="1697191565703" duration="4003000" />
-      <workItem from="1697632101902" duration="604000" />
-      <workItem from="1697655185805" duration="10079000" />
-      <workItem from="1697675732933" duration="9590000" />
-      <workItem from="1697796485202" duration="23130000" />
-      <workItem from="1697972624074" duration="3179000" />
-      <workItem from="1697998459248" duration="1020000" />
-      <workItem from="1698073252314" duration="13621000" />
-      <workItem from="1698154780395" duration="19214000" />
-      <workItem from="1698268763504" duration="29000" />
-      <workItem from="1698272940594" duration="1120000" />
-      <workItem from="1698320117702" duration="3587000" />
-      <workItem from="1698404181307" duration="3772000" />
-      <workItem from="1698487226406" duration="3569000" />
-      <workItem from="1698512777344" duration="670000" />
-      <workItem from="1698679186206" duration="5678000" />
-      <workItem from="1698838980082" duration="11856000" />
-      <workItem from="1698939060004" duration="299000" />
-      <workItem from="1698943742491" duration="1584000" />
-      <workItem from="1699444442019" duration="5082000" />
-      <workItem from="1699451949759" duration="2394000" />
-      <workItem from="1699454364259" duration="27516000" />
-      <workItem from="1699733284498" duration="17128000" />
-      <workItem from="1700046659024" duration="620000" />
-      <workItem from="1700047956803" duration="2604000" />
-      <workItem from="1700051006864" duration="9110000" />
-      <workItem from="1700751642871" duration="114000" />
-      <workItem from="1700751811695" duration="11145000" />
-      <workItem from="1700820683981" duration="3998000" />
-      <workItem from="1701092851324" duration="5570000" />
-      <workItem from="1702379040707" duration="77000" />
-      <workItem from="1702382433382" duration="160000" />
-      <workItem from="1702382604366" duration="16836000" />
-      <workItem from="1702551746905" duration="2184000" />
-      <workItem from="1702642603504" duration="12180000" />
-      <workItem from="1702763595018" duration="514000" />
-      <workItem from="1703673986415" duration="1164000" />
-      <workItem from="1703680570420" duration="1754000" />
-      <workItem from="1703684573929" duration="2277000" />
-      <workItem from="1703687174622" duration="219000" />
-      <workItem from="1703687410272" duration="26000" />
-      <workItem from="1703687670901" duration="14000" />
-      <workItem from="1703687951639" duration="2135000" />
-      <workItem from="1703701998803" duration="11010000" />
-      <workItem from="1703860317627" duration="27959000" />
-      <workItem from="1704024971722" duration="563000" />
-      <workItem from="1704029715105" duration="552000" />
-      <workItem from="1705484533981" duration="322000" />
-      <workItem from="1705484865568" duration="4737000" />
-      <workItem from="1705516840711" duration="3813000" />
-      <workItem from="1705651641666" duration="33000" />
-      <workItem from="1705651685010" duration="19208000" />
-      <workItem from="1705691288445" duration="2433000" />
-      <workItem from="1706004339177" duration="804000" />
-      <workItem from="1706018287616" duration="5586000" />
-      <workItem from="1706093951892" duration="3675000" />
-      <workItem from="1706176946313" duration="1849000" />
-      <workItem from="1706268248755" duration="3887000" />
-      <workItem from="1709028867281" duration="4879000" />
-      <workItem from="1710438148867" duration="2521000" />
-      <workItem from="1710508833156" duration="805000" />
-      <workItem from="1710846273852" duration="87000" />
-      <workItem from="1710846371761" duration="2073000" />
-      <workItem from="1710849561650" duration="9246000" />
-      <workItem from="1711027354013" duration="4005000" />
-      <workItem from="1711139932697" duration="133000" />
-      <workItem from="1711358279850" duration="9896000" />
-      <workItem from="1711441044102" duration="2613000" />
-      <workItem from="1712314461600" duration="1383000" />
-      <workItem from="1712574414718" duration="1026000" />
-      <workItem from="1712836725232" duration="18387000" />
-      <workItem from="1712922262062" duration="6311000" />
-      <workItem from="1713180767119" duration="5637000" />
-      <workItem from="1713344813473" duration="18251000" />
-      <workItem from="1713793451596" duration="12468000" />
-      <workItem from="1713957218364" duration="13889000" />
-      <workItem from="1714646849198" duration="48425000" />
-      <workItem from="1715004235761" duration="13975000" />
-      <workItem from="1715164221340" duration="12869000" />
+      <updated>1715325337093</updated>
+      <workItem from="1715325338258" duration="6902000" />
+      <workItem from="1715332249227" duration="13166000" />
+      <workItem from="1715367411769" duration="1996000" />
+      <workItem from="1715426223866" duration="7804000" />
+      <workItem from="1715592518582" duration="11039000" />
+      <workItem from="1715788217764" duration="21786000" />
+      <workItem from="1715873217652" duration="4882000" />
+      <workItem from="1715891666410" duration="4558000" />
+      <workItem from="1715897507328" duration="5533000" />
+      <workItem from="1715936638573" duration="9588000" />
+      <workItem from="1716292419372" duration="12804000" />
+      <workItem from="1716387205943" duration="3803000" />
+      <workItem from="1716886066551" duration="833000" />
+      <workItem from="1717415658814" duration="17781000" />
+      <workItem from="1717486467462" duration="6928000" />
+      <workItem from="1717595090647" duration="9706000" />
+      <workItem from="1717663803264" duration="478000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="package.json" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/partials/SearchMatchBar.tsx</url>
-          <line>17</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

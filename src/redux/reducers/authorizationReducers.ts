@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const initialState = {
+const initialState: SessionAuth = {
     token: null,
     refresh_token: null,
     isLogged: false

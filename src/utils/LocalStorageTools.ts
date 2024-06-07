@@ -1,21 +1,27 @@
 'use client'
 
-import MasterApiTool from "@/utils/api/MasterApiTool";
+import MasterService from "@/services/api/master/MasterService";
 
-type MasterData = {
-    [key: string]: any
-}
+async function readAndSetMasterData() {
+    const [countries, provinces, cities, sports] = await Promise.allSettled([
+        MasterService.getCountries(),
+        MasterService.getProvinces(),
+        MasterService.getCities(),
+        MasterService.getSports()
+    ]);
 
-export async function readAndSetMasterData() {
-    const masterData = MasterApiTool.getMasterData();
+    const masterData = {
+        countries: countries.status === 'fulfilled' ? countries.value : [],
+        provinces: provinces.status === 'fulfilled' ? provinces.value : [],
+        cities: cities.status === 'fulfilled' ? cities.value : [],
+        sports: sports.status === 'fulfilled' ? sports.value : []
+    };
 
-    masterData.then((data: MasterData) => {
-        Object.entries(data).forEach(([key, value]) => {
-            localStorage.setItem(key, JSON.stringify(value));
-        })
-    }).catch((error) => {
-        console.log(error);
-    });
+    localStorage.setItem("countries", JSON.stringify(masterData.countries));
+    localStorage.setItem("provinces", JSON.stringify(masterData.provinces));
+    localStorage.setItem("cities", JSON.stringify(masterData.cities));
+    localStorage.setItem("sports", JSON.stringify(masterData.sports));
+
 }
 
 const readMasterData = () => {
@@ -25,7 +31,7 @@ const readMasterData = () => {
     const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
     if (!lastUpdate || diffDays >= 1) {
-        readAndSetMasterData();
+        readAndSetMasterData().then();
         localStorage.setItem('lastMasterDataUpdate', currentTime.toString());
     }
 }
