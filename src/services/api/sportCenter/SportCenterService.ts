@@ -37,10 +37,38 @@ const getReservesAvailable = async (sportCenterId: number, sport: string, date: 
     return apiResponse.status === HTTP_STATUS.OK ? apiResponse.data : null;
 }
 
+const updateSportCenter = async (id: number, name: string, street: string, postalCode: string)=> {
+    const body = {
+        name: name,
+        street: street,
+        postalCode: postalCode
+    }
+
+    const apiResponse = await SportCenterApi.apiUpdateSportCenter(id, body);
+
+    return apiResponse.status === HTTP_STATUS.OK ? apiResponse.data : null;
+}
+
+const createSportCenter = async (name: string, city: number, street: string, postalCode: string) => {
+    const body = {
+        name: name,
+        city: {
+            id: city
+        },
+        street: street,
+        postalCode: postalCode
+    }
+
+    const apiResponse = await SportCenterApi.apiCreateSportCenter(body);
+    return apiResponse.status === HTTP_STATUS.CREATED ? apiResponse.data : null;
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     getAllSportCentersData,
     getSportCenterDetails,
     getAvailableSports,
-    getReservesAvailable
+    getReservesAvailable,
+    updateSportCenter,
+    createSportCenter
 }

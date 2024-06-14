@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e3f032d-8bdc-4232-b4fd-24060a0667aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/reserves/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reserves/search/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sport_facilities/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_facilities/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sport_facilities/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_facilities/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sass/_forms.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/_forms.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CourtReservationModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CreateReserveModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CreateReserveModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/CreateSportCenterModal/CreateSportCenterModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CreateSportCenterModal/CreateSportCenterModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/api/sportCenter/SportCenterApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/sportCenter/SportCenterApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/api/reserve/ReserveService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/reserve/ReserveService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/api/sportCenter/SportCenterService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/sportCenter/SportCenterService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/sportCenter.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/sportCenter.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/FormatDateTools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/FormatDateTools.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +30,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="package.json" />
-        <option value="SCSS File" />
         <option value="TypeScript JSX File" />
+        <option value="SCSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -49,8 +59,8 @@
     &quot;JavaScript Debug.TFG.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/alexander/Documentos/University/TFG/app/frontend_v2/src/app/matches&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/alexander/Documentos/University/TFG/app/frontend_v2/src/components/app/sport_facilities&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -72,11 +82,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/app/sport_facilities" />
+      <recent name="$PROJECT_DIR$/src/components/modal/CreateReserveModal" />
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/app/matches" />
       <recent name="$PROJECT_DIR$/.." />
-      <recent name="$PROJECT_DIR$/src/components/modal/CreateReserveModal" />
-      <recent name="$PROJECT_DIR$/src/enum" />
-      <recent name="$PROJECT_DIR$/src/utils" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/modal" />
@@ -113,6 +123,10 @@
       <workItem from="1717486467462" duration="6928000" />
       <workItem from="1717595090647" duration="9706000" />
       <workItem from="1717663803264" duration="478000" />
+      <workItem from="1717750483470" duration="5323000" />
+      <workItem from="1718011553270" duration="10630000" />
+      <workItem from="1718098353369" duration="16750000" />
+      <workItem from="1718352077346" duration="10200000" />
     </task>
     <servers />
   </component>

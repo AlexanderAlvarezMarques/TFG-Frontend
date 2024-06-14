@@ -33,6 +33,7 @@ const getReserve = async (id: number) => {
 
 const createReserve = async (courtId: number, date: Date, hour: number, minutes: number, duration: number)=> {
 
+    date.setHours(hour, minutes, 0, 0);
     const endDate = new Date(date.getTime() + (duration * 60000)) // 60000 => milliseconds in a minute
 
     const body = {
@@ -42,8 +43,8 @@ const createReserve = async (courtId: number, date: Date, hour: number, minutes:
         startDate: FormatDateTools.formatApiDate(date),
         endDate: FormatDateTools.formatApiDate(endDate)
     }
-    const apiResponse = await ReserveApi.apiCreateReserve(body);
-    return apiResponse.status === HTTP_STATUS.CREATED;
+
+    return await ReserveApi.apiCreateReserve(body);
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

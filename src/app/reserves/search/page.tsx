@@ -90,8 +90,7 @@ const SearchReservesPage = () => {
                                         </div>
                                         {showMore &&
                                             <div className={`showMore`}>
-                                                <button className={`btn btn-success`} onClick={loadMoreAction}>Load more
-                                                </button>
+                                                <button className={`btn btn-success`} onClick={loadMoreAction}>Load more</button>
                                             </div>
                                         }
                                     </>

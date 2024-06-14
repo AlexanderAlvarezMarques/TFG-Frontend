@@ -6,12 +6,31 @@ import UserService from "@/services/api/user/UserService";
 import "@/assets/sass/pages/sport_facilities.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import CreateEditSportCenterModal from "@/components/modal/CreateSportCenterModal/CreateSportCenterModal";
+import CreateSportCenterModal from "@/components/modal/CreateSportCenterModal/CreateSportCenterModal";
 import Link from "next/link";
 
 const SportFacilitiesPage = () => {
 
-    const [sportFacilities, setSportFacilities] = useState<SearchResult<SportCenter>>();
+    const [sportFacilities, setSportFacilities] = useState<SearchResult<SportCenter>>({
+        data: [],
+        pagination: {
+            currentPage: -1,
+            itemsPerPage: Number(process.env.NEXT_PUBLIC_DEFAULT_ITEMS_PER_PAGE),
+            maxPage: -1,
+            minPage: -1,
+            nextPage: -1,
+            previousPage: -1
+        }
+    });
+
+    const updateSportFacilitiesOnCreate = (sportFacility: SportCenter) => {
+        console.log("Check point 1");
+        console.log(sportFacility);
+        setSportFacilities(prevState => ({
+            ...prevState,
+            data: [...prevState.data, sportFacility]
+        }));
+    }
 
     useEffect(() => {
         const requestSportFacilities = async () => {
@@ -37,7 +56,7 @@ const SportFacilitiesPage = () => {
                 </thead>
                 <tbody>
                 {
-                    sportFacilities?.data.map((sportFacility) =>
+                    sportFacilities.data.map((sportFacility) =>
                         <tr key={sportFacility.id}>
                             <th>{sportFacility.id}</th>
                             <td>{sportFacility.name}</td>
@@ -57,7 +76,7 @@ const SportFacilitiesPage = () => {
                 </tbody>
             </table>
 
-            <CreateEditSportCenterModal action={() => {}} />
+            <CreateSportCenterModal action={updateSportFacilitiesOnCreate} />
         </>
     )
 

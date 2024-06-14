@@ -3,6 +3,7 @@ import {useState} from "react";
 import {format} from "date-fns";
 
 import ReserveService from "@/services/api/reserve/ReserveService";
+import HTTP_STATUS from "@/enum/HttpStatusEnum";
 
 type Props = {
     onClose: () => void
@@ -29,9 +30,16 @@ const CourtReservationModal = ({onClose, courtId, courtNumber, date, hour, minut
 
     const submitForm = async (e: any) => {
         e.preventDefault();
+        setSuccess(false);
+        setError(false);
         const response = await ReserveService.createReserve(courtId, date, Number(hour), Number(minute), Number(e.target.duration.value));
-        if (response) onCloseModal();
-        else console.log("Fallo al crear reserva");
+        if (response.status === HTTP_STATUS.CREATED) {
+            setSuccess(true);
+            setReserveId(response.data.id);
+        } else {
+            setError(true);
+            setErrorMessage(response.data.details);
+        }
     }
 
     return showModal && (

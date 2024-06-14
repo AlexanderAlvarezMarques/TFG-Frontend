@@ -2,7 +2,7 @@ import {format} from "date-fns";
 
 const formatApiDate = (date: Date) => {
     const day = format(date, "yyyy-MM-dd");
-    const time = format(date, "HH:ii")
+    const time = `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 
     return `${day}T${time}`
 }

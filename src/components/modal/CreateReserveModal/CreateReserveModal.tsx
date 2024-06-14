@@ -63,7 +63,6 @@ const CreateReserveModal = () => {
         setFormOptions((prevState) => {
             const selectedCity = masterData.cities.find((c) => c.id === Number(e.target.value));
             const sportCenters = selectedCity?.sportCenters;
-            console.log(sportCenters);
             return selectedCity ? {
                 ...prevState,
                 sportCenters: selectedCity.sportCenters ?? [],
@@ -203,15 +202,6 @@ const CreateReserveModal = () => {
                             disabled={sport === ''}
                         />
                     </div>
-
-                    {/*  Submit  */}
-                    {/*{*/}
-                    {/*    province !== -1 && city !== -1 && sportCenter !== -1 && sport !== '' && (*/}
-                    {/*        <div className={`formGroup`}>*/}
-                    {/*            <input type="submit" value="Crear reserva" className="btn btn-primary"/>*/}
-                    {/*        </div>*/}
-                    {/*    )*/}
-                    {/*}*/}
 
                 </form>
 

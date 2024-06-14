@@ -11,8 +11,8 @@ type SportCenter = {
 }
 
 type Court = {
-    id?: number
-    identifier?: string
+    id: number
+    identifier: string
     number: number
     sport: string
     sportCenter: SportCenter

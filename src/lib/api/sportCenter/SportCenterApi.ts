@@ -19,10 +19,22 @@ const apiGetReservesAvailable = async (id: number, params: any) => globalAxios.g
     {params}
 )
 
+const apiUpdateSportCenter = async (id: number, body: any) => globalAxios.put(
+    `${endPoint}/${id}`,
+    body
+)
+
+const apiCreateSportCenter = async (body: any) => globalAxios.post(
+    `${endPoint}`,
+    body
+)
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     apiGetAllSportCenters,
     apiGetSportCenter,
     apiGetSports,
-    apiGetReservesAvailable
+    apiGetReservesAvailable,
+    apiUpdateSportCenter,
+    apiCreateSportCenter
 }

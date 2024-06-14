@@ -13,28 +13,31 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '@/assets/sass/globals.scss'
 import Navbar from "@/partials/Navbar";
 import CreateReserveModal from "@/components/modal/CreateReserveModal/CreateReserveModal";
+import {MessagePopupProvider} from "@/components/Context/MessagePopupContext";
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
     return (
         <html lang="es">
         <Provider store={store}>
+            <MessagePopupProvider>
 
-            <MasterDataReader />
+                <MasterDataReader />
 
-            <body className={``}>
-            <header>
-                <Navbar />
-            </header>
+                <body className={``}>
+                <header>
+                    <Navbar />
+                </header>
 
-            <main className={`main`}>
-                {children}
-            </main>
+                <main className={`main`}>
+                    {children}
+                </main>
 
-            {/* Modal */}
-            <div id="rootModal"></div>
-            <CreateReserveModal />
+                {/* Modal */}
+                <div id="rootModal"></div>
+                <CreateReserveModal />
 
-            </body>
+                </body>
+            </MessagePopupProvider>
         </Provider>
         <BootstrapClient />
         </html>
