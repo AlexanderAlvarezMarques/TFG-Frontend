@@ -18,7 +18,7 @@ const masterDataSlicer = createSlice({
             state.sports = sports;
             state.lastUpdate = Date.now();
         },
-        clear: (state) => {
+        clearMasterData: (state) => {
             Object.assign(state, initialState);
         }
     }
@@ -26,7 +26,7 @@ const masterDataSlicer = createSlice({
 
 export const {
     setMasterData,
-    clear
+    clearMasterData
 } = masterDataSlicer.actions
 
 export default masterDataSlicer.reducer

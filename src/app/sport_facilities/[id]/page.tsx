@@ -6,11 +6,13 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faEdit, faClose } from "@fortawesome/free-solid-svg-icons";
 
 import "@/assets/sass/pages/sport_facilities.scss";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import FormatTextTools from "@/utils/FormatTextTools";
 import EditCourtModal from "@/components/app/sport_facilities/EditCourtModal";
 import {MessageBandColorEnum, useMessagePopup} from "@/components/Context/MessagePopupContext";
 import CourtService from "@/services/api/sportCenter/CourtService";
+import MasterDataTools from "@/utils/MasterDataTools";
+import {setMasterData} from "@/redux/reducers/masterDataReducers";
 
 type Params = {
     params: {
@@ -21,6 +23,7 @@ type Params = {
 const SportCenterEditPage: React.FC<Params> = ({params: {id}}) => {
 
     const sports = useSelector((state: StorageState) => state.masterData.sports);
+    const dispatch = useDispatch();
     const { openPopup } = useMessagePopup();
 
     const [sportCenter, setSportCenter] = useState<SportCenter>();
@@ -69,6 +72,8 @@ const SportCenterEditPage: React.FC<Params> = ({params: {id}}) => {
         if (sportCenter) {
             const response = await CourtService.createCourt(sportCenter.id, sport, number);
             if (response !== null) {
+                const { provinces, cities, sports } = await MasterDataTools.readMasterData();
+                dispatch(setMasterData({provinces, cities, sports}));
                 openPopup("Cancha/pista creada", MessageBandColorEnum.GREEN);
                 setSportCenter((prevState) => {
                     if (prevState) {

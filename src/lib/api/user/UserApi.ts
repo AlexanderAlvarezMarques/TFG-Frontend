@@ -25,11 +25,17 @@ const apiGetUserSportFacilities = async (params: any) => globalAxios.get(
     {params}
 )
 
+const apiCreatePlayerUser = async (body: any) => globalAxios.post(
+    `${endPoint}/player`,
+    body
+)
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     apiLogIn,
     apiGetUser,
     apiGetUserByToken,
     apiGetUserDashboard,
-    apiGetUserSportFacilities
+    apiGetUserSportFacilities,
+    apiCreatePlayerUser,
 }

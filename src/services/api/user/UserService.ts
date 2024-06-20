@@ -51,11 +51,28 @@ const getUserSportFacilities = async (page: number, itemsPerPage: number) => {
     return apiResponse.status === HTTP_STATUS.OK ? apiResponse.data : null;
 }
 
+const createPlayerUser = async (name: string, surname: string, email: string, username: string, password: string, nif = "", language = "ES") => {
+    const body = {
+        name: name,
+        surname: surname,
+        username: username,
+        email: email,
+        password: password,
+        nif: nif,
+        language: language,
+        userTelephoneNumbers: []
+    }
+
+    const apiResponse = await UserApi.apiCreatePlayerUser(body);
+    return apiResponse.status === HTTP_STATUS.OK ? apiResponse.data : null;
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     logIn,
     getUserDetails,
     getUserByToken,
     getUserDashboard,
-    getUserSportFacilities
+    getUserSportFacilities,
+    createPlayerUser
 }

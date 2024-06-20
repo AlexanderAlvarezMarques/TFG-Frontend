@@ -2,10 +2,13 @@
 
 import React, {FormEvent, useEffect, useState} from "react";
 import Modal from "@/components/modal/Modal";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import FormatTextTools from "@/utils/FormatTextTools";
 import SportCenterService from "@/services/api/sportCenter/SportCenterService";
 import {MessageBandColorEnum, useMessagePopup} from "@/components/Context/MessagePopupContext";
+import MasterDataReader from "@/components/storage/MasterDataReader";
+import MasterDataTools from "@/utils/MasterDataTools";
+import {setMasterData} from "@/redux/reducers/masterDataReducers";
 
 type CreateSportCenterProps = {
     action: Function
@@ -21,6 +24,7 @@ const CreateSportCenterModal: React.FC<CreateSportCenterProps> = ({ action }) =>
     const masterData = useSelector((state: StorageState) => state.masterData);
     const { openPopup } = useMessagePopup();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const [name, setName] = useState("");
     const [province, setProvince] = useState(-1)
@@ -61,6 +65,8 @@ const CreateSportCenterModal: React.FC<CreateSportCenterProps> = ({ action }) =>
             action(response);
             resetValues();
             setIsModalOpen(false);
+            const {provinces, cities, sports} = await MasterDataTools.readMasterData();
+            dispatch(setMasterData({provinces, cities, sports}));
         }
     }
 

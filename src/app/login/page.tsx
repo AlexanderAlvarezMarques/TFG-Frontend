@@ -1,7 +1,7 @@
 'use client'
 
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setToken } from "@/redux/reducers/authorizationReducers"
 import {setUser} from "@/redux/reducers/userReducers";
@@ -11,6 +11,7 @@ const LogInPage = () => {
 
     const dispatch = useDispatch()
     const router = useRouter()
+    const queryParams = useSearchParams();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -41,7 +42,11 @@ const LogInPage = () => {
             }
             dispatch(setUser(payload));
 
-            router.back();
+            if (queryParams.has('home')) {
+                router.push("/");
+            } else {
+                router.back();
+            }
         }
 
         setLogInError(true)

@@ -189,7 +189,7 @@ const ReserveDetailsPage: React.FC<Params> = ({params: {id}}) => {
     const deleteReserveAction = async () => {
         if (reserve) {
             const response = await ReserveService.deleteReserve(reserve.id);
-            if (response) router.push("/dashboard");
+            if (response) router.push("/reservations");
         }
     }
 

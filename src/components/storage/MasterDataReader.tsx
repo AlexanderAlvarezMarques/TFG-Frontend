@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import MasterService from "@/services/api/master/MasterService";
 import {setMasterData} from "@/redux/reducers/masterDataReducers";
 import {setToken} from "@/redux/reducers/authorizationReducers";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import UserService from "@/services/api/user/UserService";
 import {setUser} from "@/redux/reducers/userReducers";
 
@@ -18,13 +18,13 @@ const MasterDataReader = () => {
 
     useEffect(() => {
         const checkAndUpdateMasterData = async () => {
-            if (!masterData.lastUpdate || masterData.lastUpdate > (Date.now() - (60 * 60 * 1000))) {
+            // if (!masterData.lastUpdate || masterData.lastUpdate > (Date.now() - (60 * 60 * 1000))) {
                 const provinces = await MasterService.getProvinces();
                 const cities = await MasterService.getCities();
                 const sports = await MasterService.getSports();
 
                 dispatch(setMasterData({provinces: provinces, cities: cities, sports: sports}));
-            }
+            // }
         }
 
         const checkAndUpdateAuthData = () => {

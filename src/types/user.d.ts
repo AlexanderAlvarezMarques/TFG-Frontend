@@ -7,6 +7,7 @@ type User = {
     surname: string
     nif?: string
     userTelephoneNumbers?: number[]
+    password?: string
     isAdmin: boolean
     isPlayer: boolean
 }

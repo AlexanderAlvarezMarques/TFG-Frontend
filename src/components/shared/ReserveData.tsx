@@ -65,7 +65,6 @@ const ReserveCard: React.FC<ReserveCardProps> = memo(({reserve, onChangeAction, 
 
     if (
         reserve.status === 'CANCELED' ||
-        reserve.status === 'EXPIRED' ||
         (checkIsParticipant && !reserve.isParticipant)
     ) {
         return (

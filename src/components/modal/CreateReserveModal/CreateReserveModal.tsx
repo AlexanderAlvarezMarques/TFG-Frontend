@@ -107,6 +107,15 @@ const CreateReserveModal = () => {
     }, [masterData]);
 
     useEffect(() => {
+        setProvince(-1);
+        setCity(-1);
+        setSportCenter(-1);
+        setSport("");
+        setDate(null);
+        setReserves([]);
+    }, [isModalOpen]);
+
+    useEffect(() => {
         if (date !== null) {
             const hours = date.getHours();
             if (hours >= 8 && hours < 22) {

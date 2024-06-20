@@ -70,6 +70,11 @@ const MatchesPage = () => {
         requestHistoryGames().then()
     }, []);
 
+    useEffect(() => {
+        console.log("Active matches", activeMatches);
+        console.log("History matches", historyMatches);
+    }, [selectedTab]);
+
     return (
         <div className={`reservations`}>
             <div className={`tabs`}>
@@ -87,6 +92,7 @@ const MatchesPage = () => {
                             return <ReserveCard key={reserve.id} reserve={reserve} onChangeAction={undefined}/>
                         }) :
                         historyMatches?.data.map((reserve) => {
+                            console.log("Match", reserve)
                             return <ReserveCard key={reserve.id} reserve={reserve} onChangeAction={undefined}/>
                         })
                 }

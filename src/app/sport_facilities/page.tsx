@@ -24,8 +24,6 @@ const SportFacilitiesPage = () => {
     });
 
     const updateSportFacilitiesOnCreate = (sportFacility: SportCenter) => {
-        console.log("Check point 1");
-        console.log(sportFacility);
         setSportFacilities(prevState => ({
             ...prevState,
             data: [...prevState.data, sportFacility]
