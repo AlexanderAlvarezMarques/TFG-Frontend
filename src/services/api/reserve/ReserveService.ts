@@ -47,10 +47,23 @@ const createReserve = async (courtId: number, date: Date, hour: number, minutes:
     return await ReserveApi.apiCreateReserve(body);
 }
 
+const rateReserve = async (reserveId: number, rate: number) => {
+    const body = {
+        reserve: {
+            id: reserveId
+        },
+        rate: rate
+    }
+
+    const apiResponse = await ReserveApi.apiRateReserve(reserveId, body);
+    return apiResponse.status === HTTP_STATUS.CREATED;
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     searchReserves,
     deleteReserve,
     getReserve,
-    createReserve
+    createReserve,
+    rateReserve
 }

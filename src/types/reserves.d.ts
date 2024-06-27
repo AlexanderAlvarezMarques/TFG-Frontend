@@ -18,6 +18,7 @@ type Reserve = {
     reserveRates: ReserveRate[]
     participants?: ReserveParticipant[]
     owner?: User
+    allowRate: boolean
 }
 
 type ReserveRate = {

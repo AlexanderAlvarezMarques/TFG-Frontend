@@ -21,10 +21,16 @@ const apiDeleteReserve = async (id: number) => globalAxios.delete(
     `${endPoint}/${id}`
 );
 
+const apiRateReserve = async (reserveId: number, body: any) => globalAxios.post(
+    `${endPoint}/rates`,
+    body
+)
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     apiSearchReserves,
     apiGetReserve,
     apiCreateReserve,
-    apiDeleteReserve
+    apiDeleteReserve,
+    apiRateReserve
 }

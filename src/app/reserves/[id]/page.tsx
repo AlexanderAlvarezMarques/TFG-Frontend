@@ -1,6 +1,7 @@
 'use client'
 
 import React, {useEffect, useState} from "react";
+import ReactStars from 'react-stars';
 import ReserveService from "@/services/api/reserve/ReserveService";
 import {Reserve, ReserveParticipant, ReserveRate} from "@/types/reserves";
 import FormatDateTools from "@/utils/FormatDateTools";
@@ -12,6 +13,9 @@ import ReserveParticipantService from "@/services/api/reserve/ReserveParticipant
 
 // CSS
 import "@/assets/sass/pages/reserveDetails.scss";
+import ReserveStatusEnum from "@/enum/ReserveStatusEnum";
+import {MessageBandColorEnum, useMessagePopup} from "@/components/Context/MessagePopupContext";
+import {useSelector} from "react-redux";
 
 type Params = {
     params: {
@@ -22,9 +26,12 @@ type Params = {
 const ReserveDetailsPage: React.FC<Params> = ({params: {id}}) => {
 
     const router = useRouter();
+    const user = useSelector((state: StorageState) => state.user);
 
     const [error, setError] = useState(false);
     const [reserve, setReserve] = useState<Reserve|null>(null);
+
+    const { openPopup } = useMessagePopup();
 
     function generateSportCenterDetails() {
         if (!reserve || reserve.court.sportCenter === undefined) return null;
@@ -106,8 +113,6 @@ const ReserveDetailsPage: React.FC<Params> = ({params: {id}}) => {
         if (reserve.participants === undefined) return null;
         const participants: ReserveParticipant[] = reserve.participants;
 
-        console.log(participants);
-
         return (
             <>
                 <table>
@@ -115,7 +120,7 @@ const ReserveDetailsPage: React.FC<Params> = ({params: {id}}) => {
                     <tr>
                         <th>Jugador</th>
                         <th>Estatus</th>
-                        {reserve.isOwner && (
+                        {reserve.isOwner && reserve.status === ReserveStatusEnum.BOOKED && (
                             <th className={`mw-40`}>Acciones</th>
                         )}
                     </tr>
@@ -132,7 +137,7 @@ const ReserveDetailsPage: React.FC<Params> = ({params: {id}}) => {
                                         participant.status
                                 }
                             </td>
-                            {reserve.isOwner && (reserve.owner && reserve.owner.username !== participant.participant.username) && (
+                            {reserve.isOwner && (reserve.owner && reserve.owner.username !== participant.participant.username) && reserve.status === ReserveStatusEnum.BOOKED && (
                                 <td className={'reserveDetailsActionButtons'}>
                                     {(participant.status === PLAYER_STATUS_ENUM.REQUESTED || participant.status === PLAYER_STATUS_ENUM.REJECTED) && !reserve.isFull && (
                                         <>
@@ -177,7 +182,17 @@ const ReserveDetailsPage: React.FC<Params> = ({params: {id}}) => {
                     {rates.map((rate, index) => (
                         <tr key={index}>
                             <td>{rate.participant.username}</td>
-                            <td>{rate.rate}</td>
+                            <td>
+                                <ReactStars
+                                    count={5}
+                                    size={30}
+                                    value={rate.rate}
+                                    color2={`#ffd700`}
+                                    edit={rate.rate === 0 && rate.participant.id === user.id}
+                                    onChange={rateReserveAction}
+                                    half={false}
+                                />
+                            </td>
                         </tr>
                     ))}
                     </tbody>
@@ -204,6 +219,33 @@ const ReserveDetailsPage: React.FC<Params> = ({params: {id}}) => {
         if (reserve) {
             const response = await ReserveParticipantService.rejectJoinRequest(reserve.id, participantId);
             if (response !== null) updateParticipants(response);
+        }
+    }
+
+    const rateReserveAction = async (rate: number) => {
+        const response = await ReserveService.rateReserve(id, rate);
+
+        if (response) {
+            openPopup("Valoración realizada con éxito", MessageBandColorEnum.GREEN);
+
+            if (reserve) {
+                const updatedReserve = {
+                    ...reserve,
+                    reserveRates: reserve.reserveRates.map((reserveRate) => {
+                        if (reserveRate.participant.id === user.id) {
+                            return {
+                                ...reserveRate,
+                                rate: rate
+                            };
+                        }
+                        return reserveRate;
+                    })
+                };
+
+                setReserve(updatedReserve);
+            }
+        } else {
+            openPopup("Valoración fallida", MessageBandColorEnum.RED);
         }
     }
 

@@ -40,8 +40,8 @@ const Navbar = () => {
 
     const playerMenu = (
         <ul className={showUserMenu ? styles.userMenu : ''}>
-            <li><Link href={`/reservations`}>Reservas</Link></li>
-            <li><Link href={`/matches`}>Partidos</Link></li>
+            <li><Link href={`/reservations`}>Mis Reservas</Link></li>
+            <li><Link href={`/matches`}>Mis Partidos</Link></li>
             <li><Link href={`/profile`}>Cuenta</Link></li>
         </ul>
     )

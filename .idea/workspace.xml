@@ -6,21 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="7e3f032d-8bdc-4232-b4fd-24060a0667aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/matches/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/matches/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/reserves/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reserves/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sport_centers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_centers/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sport_facilities/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_facilities/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sport_facilities/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_facilities/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/sport_facilities/EditCourtModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/sport_facilities/EditCourtModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CreateReserveModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CreateReserveModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/CreateSportCenterModal/CreateSportCenterModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CreateSportCenterModal/CreateSportCenterModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/ReserveData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/ReserveData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/storage/MasterDataReader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/storage/MasterDataReader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/api/user/UserApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/user/UserApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/masterDataReducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/masterDataReducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api/user/UserService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/user/UserService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/user.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/user.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/api/reserve/ReserveApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/reserve/ReserveApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/partials/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/partials/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/api/reserve/ReserveService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/reserve/ReserveService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/reserves.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/reserves.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,23 +46,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.TFG.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/alexander/Documentos/University/TFG/app/frontend_v2/src/components/app/sport_facilities&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/alexander/Documentos/University/TFG/app/frontend_v2/node_modules/typescript/lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.TFG.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "/home/alexander/Documentos/University/TFG/app/frontend_v2/src/components/app/sport_facilities",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "/home/alexander/Documentos/University/TFG/app/frontend_v2/node_modules/typescript/lib"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -129,7 +121,13 @@
       <workItem from="1718352077346" duration="10200000" />
       <workItem from="1718371683832" duration="1900000" />
       <workItem from="1718803625836" duration="1416000" />
-      <workItem from="1718869208811" duration="9910000" />
+      <workItem from="1718869208811" duration="10036000" />
+      <workItem from="1719244827031" duration="118000" />
+      <workItem from="1719247783446" duration="356000" />
+      <workItem from="1719248427902" duration="2245000" />
+      <workItem from="1719401108366" duration="824000" />
+      <workItem from="1719402336441" duration="2035000" />
+      <workItem from="1719406473364" duration="2987000" />
     </task>
     <servers />
   </component>
