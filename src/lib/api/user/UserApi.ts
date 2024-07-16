@@ -30,6 +30,11 @@ const apiCreatePlayerUser = async (body: any) => globalAxios.post(
     body
 )
 
+const apiUpdateUserData = async (body: any) => globalAxios.patch(
+    `${endPoint}`,
+    body
+)
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     apiLogIn,
@@ -38,4 +43,5 @@ export default {
     apiGetUserDashboard,
     apiGetUserSportFacilities,
     apiCreatePlayerUser,
+    apiUpdateUserData
 }

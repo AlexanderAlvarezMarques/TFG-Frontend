@@ -8,7 +8,7 @@ import SearchEngine from "@/components/shared/SearchBar/SearchEngine";
 import "@/assets/sass/components/SearchBar/searchBar.scss";
 import FormatDateTools from "@/utils/FormatDateTools";
 import { SearchBarParams } from "@/types/components/searchBar";
-import {SearchReserveResult} from "@/types/reserves";
+import { SearchReserveResult } from "@/types/reserves";
 
 const SearchReserves: React.FC<PaginationConfig> = ({page, itemsPerPage, action}) => {
 

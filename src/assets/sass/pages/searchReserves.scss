@@ -1,3 +1,23 @@
+@use "../_variables";
+@import "../mixin";
+
+.parallax_1 {
+  background-image: url("/assets/images/tennis_01.jpg");
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include lg-screen {
+    min-height: 400px;
+  }
+}
+
 .reserves {
   display: flex;
   flex-direction: column;
@@ -9,14 +29,16 @@
     margin: 10px auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     .card {
-      width: 19%;
+      width: variables.$card-width;
       margin: 0 10px 10px 0;
     }
 
     .showMore {
       float: right;
+      text-align: center;
     }
 
   }

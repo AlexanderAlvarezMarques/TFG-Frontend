@@ -1,0 +1,14 @@
+@use "../variables";
+
+footer {
+  background-color: variables.$footer-bg-color;
+  color: variables.$footer-font-color;
+
+  a {
+    color: variables.$footer-font-color;
+
+    &:hover {
+      color: variables.$footer-font-color-hover;
+    }
+  }
+}

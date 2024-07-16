@@ -63,6 +63,11 @@ const createSportCenter = async (name: string, city: number, street: string, pos
     return apiResponse.status === HTTP_STATUS.CREATED ? apiResponse.data : null;
 }
 
+const getTopReserveSportCenterList = async () => {
+    const apiResponse = await SportCenterApi.apiGetTopReserveSportCenterList();
+    return apiResponse.status === HTTP_STATUS.OK ? apiResponse.data : [];
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     getAllSportCentersData,
@@ -70,5 +75,6 @@ export default {
     getAvailableSports,
     getReservesAvailable,
     updateSportCenter,
-    createSportCenter
+    createSportCenter,
+    getTopReserveSportCenterList
 }

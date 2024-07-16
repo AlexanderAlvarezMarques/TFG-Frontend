@@ -14,6 +14,8 @@ import CourtService from "@/services/api/sportCenter/CourtService";
 import MasterDataTools from "@/utils/MasterDataTools";
 import {setMasterData} from "@/redux/reducers/masterDataReducers";
 
+import "@/assets/sass/pages/sport_facility.scss";
+
 type Params = {
     params: {
         id: number
@@ -180,8 +182,8 @@ const SportCenterEditPage: React.FC<Params> = ({params: {id}}) => {
                     </div>
                 </form>
 
-                <div>
-                    <button className={`btn btn-primary`} onClick={() => setIsCreateCourtOpen(true)}>Crear pista/cancha</button>
+                <div className={`text-center mb-2`}>
+                    <button className={`btn btn-primary`} onClick={() => setIsCreateCourtOpen(!isCreateCourtOpen)}>Crear pista/cancha</button>
                 </div>
 
                 {
@@ -213,39 +215,40 @@ const SportCenterEditPage: React.FC<Params> = ({params: {id}}) => {
 
             </div>
 
-            <table className={'table table-bordered table-hover'}>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Identificador</th>
-                        <th>Deporte</th>
-                        <th>Nº de pista/cancha</th>
-                        <th>Estado</th>
-                        <th>
-                            {/*<button className={`btn btn-success`} onClick={() => setIsCreateModalOpen(true)}>Crear pista/cancha</button>*/}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                {
-                    sportCenter.courts?.map((court) => (
-                        <tr key={court.id}>
-                            <th>{court.id}</th>
-                            <td>{court.identifier}</td>
-                            <td>{FormatTextTools.capitalizeFirstChar(court.sport)}</td>
-                            <td>{court.number}</td>
-                            <td>{court.enable ? 'Activa' : 'No activa'}</td>
-                            <td className={'text-center'}>
-                                <button className={'btn btn-warning'} onClick={() => editCourtAction(court)}>
-                                    <FontAwesomeIcon icon={faEdit} />
-                                </button>
-                            </td>
+            <div className={`courts`}>
+                <table className={'table table-bordered table-hover'}>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Identificador</th>
+                            <th>Deporte</th>
+                            <th>Nº de pista/cancha</th>
+                            <th>Estado</th>
+                            <th>
+                                {/*<button className={`btn btn-success`} onClick={() => setIsCreateModalOpen(true)}>Crear pista/cancha</button>*/}
+                            </th>
                         </tr>
-                    ))
-                }
-                </tbody>
-            </table>
-
+                    </thead>
+                    <tbody>
+                    {
+                        sportCenter.courts?.map((court) => (
+                            <tr key={court.id}>
+                                <th>{court.id}</th>
+                                <td>{court.identifier}</td>
+                                <td>{FormatTextTools.capitalizeFirstChar(court.sport)}</td>
+                                <td>{court.number}</td>
+                                <td>{court.enable ? 'Activa' : 'No activa'}</td>
+                                <td className={'text-center'}>
+                                    <button className={'btn btn-warning'} onClick={() => editCourtAction(court)}>
+                                        <FontAwesomeIcon icon={faEdit} />
+                                    </button>
+                                </td>
+                            </tr>
+                        ))
+                    }
+                    </tbody>
+                </table>
+            </div>
             {
                 isEditModalOpen && courtToEdit && <EditCourtModal data={courtToEdit} onClose={onCloseModal} />
             }

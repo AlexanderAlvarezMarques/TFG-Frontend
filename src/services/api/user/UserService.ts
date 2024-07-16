@@ -30,11 +30,7 @@ const getUserDetails = async (id: number) => {
 const getUserByToken = async () => {
     const apiResponse = await UserApi.apiGetUserByToken();
 
-    if (apiResponse.status === HTTP_STATUS.OK) {
-        return apiResponse.data
-    }
-
-    return null;
+    return apiResponse.status === HTTP_STATUS.OK ? apiResponse.data : null;
 };
 
 const getUserDashboard = async (type: UserDashboardFilterEnumType, page: number, itemsPerPage: number) => {
@@ -67,6 +63,18 @@ const createPlayerUser = async (name: string, surname: string, email: string, us
     return apiResponse.status === HTTP_STATUS.OK ? apiResponse.data : null;
 }
 
+const updateUserData = async (username: string, email: string, nif: string = "") => {
+
+    const body = {
+        username: username,
+        email: email,
+        nif: nif
+    }
+
+    const apiResponse = await UserApi.apiUpdateUserData(body);
+    return apiResponse.status === HTTP_STATUS.ACCEPTED ? apiResponse.data : null;
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     logIn,
@@ -74,5 +82,6 @@ export default {
     getUserByToken,
     getUserDashboard,
     getUserSportFacilities,
-    createPlayerUser
+    createPlayerUser,
+    updateUserData
 }

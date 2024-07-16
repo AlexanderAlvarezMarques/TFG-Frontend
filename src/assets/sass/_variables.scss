@@ -4,14 +4,42 @@ $md-screen: 768px;
 $lg-screen: 1024px;
 $xl-screen: 1200px;
 
-// Navbar
-$navbar-bg-color: #222; // RGB (34, 34, 34)
-$navbar-font-color: #EEE; // RGB (238, 238, 238)
-
 // Web
 $web-font-color: #141514;
+$web-font-size: 1.25rem;
+
+// Navbar
+$navbar-bg-color: #1D0007; // RGB (34, 34, 34)
+
+$navbar-font-color: #f2f3f4; // RGB (242, 243, 244)
+$navbar-font-color-hover: #17d0d5; // RGB (23, 208, 213)
+$navbar-font-size: 1.3rem;
+
+$navbar-bar-icon: $navbar-font-color;
+$navbar-bar-icon-size: 1.5rem;
+
+$navbar-link-padding: 12px 0;
+$navbar-link-li-padding: 20px;
+$navbar-link-hover-transition: 0.3s ease-in-out;
+
+$navbar-toggler-padding: 8px $navbar-link-li-padding;
+
+// Footer
+$footer-bg-color: $navbar-bg-color;
+$footer-font-color: $navbar-font-color;
+$footer-font-color-hover: $navbar-font-color-hover;
+
+// Cards
+$card-width: 300px;
+
+// Pages
+  // Home
+      $home-searchEngine-background: "/assets/images/searchEngineBackground.webp";
+      $searchEngine-border-radius: 20px;
 
 // Modal
+  // Search engine bar
+      $searchEngine-background-color-sm: #ffffff; // RGB (255, 255, 255)
   // Reserve modal
     // Schedule
       $modal-reserve-schedule-available: rgba(0, 255, 0, 0.5);

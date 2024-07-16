@@ -1,0 +1,25 @@
+@import "_variables";
+
+@mixin sm-screen {
+  @media screen and (min-width: $sm-screen) {
+    @content
+  }
+}
+
+@mixin md-screen {
+  @media screen and (min-width: $md-screen) {
+    @content
+  }
+}
+
+@mixin lg-screen {
+  @media screen and (min-width: $lg-screen) {
+    @content
+  }
+}
+
+@mixin xl-screen {
+  @media screen and (min-width: $xl-screen) {
+    @content
+  }
+}

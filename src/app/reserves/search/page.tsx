@@ -23,8 +23,10 @@ const SearchReservesPage = () => {
 
     const [showMore, setShowMore] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [alreadySearch, setAlreadySearch] = useState(false);
 
     const updatePageData = (data: SearchReserveResult) => {
+        console.log("Must not enter");
         if (!data) {
             setReserves([]);
             setIsLoading(true);
@@ -65,9 +67,11 @@ const SearchReservesPage = () => {
 
     return (
         <>
-            <Suspense>
-                <SearchReserves page={pagination.currentPage} itemsPerPage={pagination.itemsPerPage} action={updatePageData} />
-            </Suspense>
+            <div className={'parallax_1'}>
+                <Suspense>
+                    <SearchReserves page={pagination.currentPage} itemsPerPage={pagination.itemsPerPage} action={updatePageData} />
+                </Suspense>
+            </div>
 
             <div className={`reserves ${isLoading ? `loading` : ``}`}>
 
@@ -89,16 +93,23 @@ const SearchReservesPage = () => {
                                             }
                                         </div>
                                         {showMore &&
-                                            <div className={`showMore`}>
-                                                <button className={`btn btn-success`} onClick={loadMoreAction}>Load more</button>
+                                            <div className={`showMore text-center mb-2`}>
+                                                <button className={`btn btn-success`} onClick={loadMoreAction}>Cargar más</button>
                                             </div>
                                         }
                                     </>
                                 ) : (
-                                    <div className="alert alert-danger">
-                                        <p>No reserves found</p>
-                                    </div>
-                                )}
+                                    <>
+                                        {
+                                            alreadySearch && (
+                                                <div className="alert alert-danger">
+                                                    <p>No reserves found</p>
+                                                </div>
+                                            )
+                                        }
+                                    </>
+                                    )
+                                }
                             </>
                         )
                 }

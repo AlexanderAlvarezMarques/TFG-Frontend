@@ -29,6 +29,10 @@ const apiCreateSportCenter = async (body: any) => globalAxios.post(
     body
 )
 
+const apiGetTopReserveSportCenterList = async () => globalAxios.get(
+    `${endPoint}_top_reserves`
+)
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     apiGetAllSportCenters,
@@ -36,5 +40,6 @@ export default {
     apiGetSports,
     apiGetReservesAvailable,
     apiUpdateSportCenter,
-    apiCreateSportCenter
+    apiCreateSportCenter,
+    apiGetTopReserveSportCenterList
 }

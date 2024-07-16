@@ -1,7 +1,7 @@
 type User = {
     id: number,
     username: string
-    email?: string
+    email: string
     language: string
     name: string
     surname: string

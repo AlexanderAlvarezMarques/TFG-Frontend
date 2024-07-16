@@ -6,6 +6,8 @@ import {MessageBandColorEnum, useMessagePopup} from "@/components/Context/Messag
 import UserService from "@/services/api/user/UserService";
 import {useRouter} from "next/navigation";
 
+import "@/assets/sass/pages/signup.scss";
+
 const SignUpPage: React.FC = () => {
 
     const router = useRouter();
@@ -72,7 +74,6 @@ const SignUpPage: React.FC = () => {
 
             <div className="formGroup">
                 <input type="submit" value="Aceptar" className="btn btn-success"/>
-                <Link href={"/"} ><button className="btn btn-danger">Cancelar</button></Link>
             </div>
         </form>
     )

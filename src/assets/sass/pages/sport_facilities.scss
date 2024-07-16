@@ -1,6 +1,13 @@
-.sportFacilities {
-  width: 80%;
-  margin: 10px auto;
 
-  vertical-align: middle;
+.sportFacilities {
+
+  overflow-x: auto;
+
+  table {
+    width: 80%;
+    margin: 10px auto;
+
+    vertical-align: middle;
+  }
+
 }

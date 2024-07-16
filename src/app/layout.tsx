@@ -14,6 +14,7 @@ import '@/assets/sass/globals.scss'
 import Navbar from "@/partials/Navbar";
 import CreateReserveModal from "@/components/modal/CreateReserveModal/CreateReserveModal";
 import {MessagePopupProvider} from "@/components/Context/MessagePopupContext";
+import Footer from "@/partials/footer";
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
     return (
@@ -36,6 +37,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
                 <div id="rootModal"></div>
                 <CreateReserveModal />
 
+                <Footer />
                 </body>
             </MessagePopupProvider>
         </Provider>

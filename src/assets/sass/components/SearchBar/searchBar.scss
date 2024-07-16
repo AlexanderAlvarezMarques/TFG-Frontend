@@ -1,38 +1,32 @@
+@use "../../variables";
+@import "../../_mixin";
+
 .searchReserves {
 
-  width: 60%;
+  width: 80%;
   margin: 10px auto;
 
   form {
 
+    background-color: variables.$searchEngine-background-color-sm;
+
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
 
-    border-radius: 10px;
-    border: 2px solid darkgray;
+    border-radius: variables.$searchEngine-border-radius;
 
     .formGroup {
 
+      width: 80%;
       display: flex;
       flex-direction: column;
       margin: 10px;
 
-    }
+      label {
+        font-size: 1.25rem;
+      }
 
-    .province, .city {
-      width: 20%;
-      min-width: 200px;
-    }
-
-    .date {
-      width: 12%;
-      min-width: 120px;
-    }
-
-    .hour {
-      width: 6%;
     }
 
     .datePicker, .hourPicker {
@@ -55,14 +49,47 @@
       transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     }
 
-    .sport {
-      min-width: 120px;
+    @include lg-screen {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .formGroup {
+        width: 30%;
+      }
+
+      .submit {
+        align-self: end;
+      }
     }
 
-    .submit {
-      width: 10%;
-    }
+    @include xl-screen {
+      .province, .city {
+        width: 20%;
+        min-width: 200px;
+      }
 
+      .date {
+        width: 12%;
+        min-width: 120px;
+      }
+
+      .hour {
+        width: 70px;
+      }
+
+      .sport {
+        width: 140px;
+      }
+
+      .submit {
+        width: 10%;
+      }
+    }
+  }
+
+  @include lg-screen {
+    max-width: 1300px;
   }
 
 }

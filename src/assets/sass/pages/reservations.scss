@@ -1,41 +1,45 @@
+@use "../_variables";
+@import "../mixin";
+
 .reservations {
-  width: 80%;
-  margin: 10px auto 0;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 
   .tabs {
     display: flex;
-    //margin: 0 20px;
+    border-bottom: 1px solid lightgray;
+    background-color: #222;
+    color: variables.$navbar-font-color;
+    text-align: center;
+    justify-content: center;
 
     .tab {
-      padding: 10px;
-      border-radius: 15px 15px 0 0;
-      border: 1px solid black;
+
+      padding: 10px 10px;
 
       &:hover {
         cursor: pointer;
-        background-color: black;
-        color: white;
+        color: variables.$navbar-font-color-hover;
       }
+    }
 
-      &:not(.active) {
-        background-color: darkgrey;
-      }
+    .active {
+      color: variables.$navbar-font-color-hover;
     }
   }
 
   .reservationsContent {
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border: 2px solid;
-    border-radius: 0 15px 15px 15px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
 
     .card {
-      width: 18%;
-      margin: 10px 15px
+      width: variables.$card-width;
+      margin: 10px 15px;
+      border-radius: 20px;
     }
 
     .loadMore {
@@ -43,5 +47,12 @@
       text-align: center;
       margin: 10px;
     }
+  }
+
+  @include lg-screen {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
   }
 }

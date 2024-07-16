@@ -24,7 +24,6 @@ const CreateReserveModal = () => {
 
     const auth = useSelector((state: StorageState) => state.authorization);
     const masterData = useSelector((state: StorageState) => state.masterData);
-    const router = useRouter();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formOptions, setFormOptions] = useState<CreateReserveFormValues>({
@@ -40,6 +39,11 @@ const CreateReserveModal = () => {
     const [sport, setSport] = useState('');
     const [date, setDate] = useState<Date|null>(null);
     const [reserves, setReserves] = useState<CourtSchedule[]>([]);
+
+    const onOpenModal = () => {
+        window.scroll({top: 0, behavior: 'smooth'});
+        setIsModalOpen(true);
+    }
 
     const onChangeProvince = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setProvince(Number(e.target.value));
@@ -130,6 +134,9 @@ const CreateReserveModal = () => {
     return auth.isLogged ? isModalOpen ?
         (
             <Modal onClose={() => setIsModalOpen(false)} >
+
+                <h2 className={'text-center text-decoration-underline'}>Crear reserva</h2>
+
                 <form className={`form ${styles.form}`} onSubmit={createReserveAction}>
 
                     {/* Provinces */}
@@ -219,7 +226,7 @@ const CreateReserveModal = () => {
                 }
             </Modal>
         ) :
-            <button className={`btn btn-primary ${styles.openModalButton}`} onClick={() => setIsModalOpen(true)}>+</button>
+            <button className={`btn btn-primary ${styles.openModalButton}`} onClick={onOpenModal}>+</button>
         : <></>
 }
 

@@ -40,7 +40,10 @@ const SportFacilitiesPage = () => {
     }, []);
 
     return (
-        <>
+        <div className={`sportFacilities`}>
+
+            <div className={`mt-2 mx-2`}><CreateSportCenterModal action={updateSportFacilitiesOnCreate} /></div>
+
             <table className={`table table-bordered table-hover sportFacilities`}>
                 <thead className={`thead-dark`}>
                 <tr>
@@ -73,9 +76,7 @@ const SportFacilitiesPage = () => {
                 }
                 </tbody>
             </table>
-
-            <CreateSportCenterModal action={updateSportFacilitiesOnCreate} />
-        </>
+        </div>
     )
 
 }

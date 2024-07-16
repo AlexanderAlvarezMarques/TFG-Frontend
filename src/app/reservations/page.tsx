@@ -7,6 +7,7 @@ import {UserDashboardFilterEnum} from "@/enum/UserDashboardQueryParamEnum";
 import ReserveCard from "@/components/shared/ReserveData";
 
 import "@/assets/sass/pages/reservations.scss";
+import Loading from "@/components/shared/Loading";
 
 const ReservationsPage = () => {
 
@@ -26,6 +27,7 @@ const ReservationsPage = () => {
     const [historyReserves, setHistoryReserves] = useState<SearchResult<Reserve>>();
 
     const [selectedTab, setSelectedTab] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
 
     const loadMoreAction = async () => {
         if (selectedTab === 0 && activeReserves) {
@@ -68,9 +70,12 @@ const ReservationsPage = () => {
 
         requestActiveReserves().then()
         requestHistoryReserves().then()
+        setIsLoading(false);
     }, []);
 
-    return (
+    return isLoading ?
+        <Loading/> :
+        (
         <div className={`reservations`}>
             <div className={`tabs`}>
                 <div className={`tab ${selectedTab === 0 ? 'active' : ''}`} onClick={() => setSelectedTab(0)}>

@@ -91,23 +91,23 @@ const ReserveCard: React.FC<ReserveCardProps> = memo(({reserve, onChangeAction, 
                     <h3 className="card-title">
                         {reserve.court.sportCenter.name}
                     </h3>
-                    <h5 className="card-subtitle text-muted">
+                    <h5 className="card-subtitle text-muted text-center my-2">
                         {startHour + ' - ' + endHour}
                     </h5>
 
-                    <table>
+                    <table className={`w-100`}>
                         <tbody>
                         <tr>
-                            <td>Date</td>
-                            <td>{reserveDay}</td>
+                            <td>Fecha</td>
+                            <td className={`text-end`}>{reserveDay}</td>
                         </tr>
                         <tr>
-                            <td>Sport</td>
-                            <td>{FormatTextTools.capitalizeFirstChar(reserve.sport)}</td>
+                            <td>Deporte</td>
+                            <td className={`text-end`}>{FormatTextTools.capitalizeFirstChar(reserve.sport)}</td>
                         </tr>
                         <tr>
-                            <td>Court/field nº</td>
-                            <td>{reserve.court.number}</td>
+                            <td>Nº pista/cancha</td>
+                            <td className={`text-end`}>{reserve.court.number}</td>
                         </tr>
                         </tbody>
                     </table>

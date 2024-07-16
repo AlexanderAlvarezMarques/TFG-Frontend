@@ -7,6 +7,8 @@ import { setToken } from "@/redux/reducers/authorizationReducers"
 import {setUser} from "@/redux/reducers/userReducers";
 import UserService from "@/services/api/user/UserService";
 
+import "@/assets/sass/pages/login.scss";
+
 const LogInPage = () => {
 
     const dispatch = useDispatch()

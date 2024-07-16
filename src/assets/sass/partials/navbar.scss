@@ -1,0 +1,100 @@
+@use "../variables";
+@import "../mixin";
+
+.navbar {
+
+  background-color: variables.$navbar-bg-color;
+  color: variables.$navbar-font-color;
+  font-size: variables.$navbar-font-size;
+  padding: 0;
+
+  .toggler {
+    background-color: variables.$navbar-bg-color;
+    border: none;
+    padding: variables.$navbar-toggler-padding;
+    color: variables.$navbar-bar-icon;
+    font-size: variables.$navbar-bar-icon-size;
+  }
+
+  a {
+    text-decoration: none;
+    color: variables.$navbar-font-color;
+    padding: variables.$navbar-link-padding;
+    transition: variables.$navbar-link-hover-transition;
+
+    & {
+      border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+    }
+
+    &:hover {
+      color: variables.$navbar-font-color-hover;
+    }
+
+    li {
+      padding-left: variables.$navbar-link-li-padding;
+    }
+  }
+
+  .userName {
+    text-decoration: none;
+    color: variables.$navbar-font-color;
+    padding: 14px 20px;
+    transition: variables.$navbar-link-hover-transition;
+
+    border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+
+    &:hover {
+      color: variables.$navbar-font-color-hover;
+      cursor: pointer;
+    }
+  }
+
+  .dropDownIcon {
+    margin-left: 5px;
+  }
+
+  @media screen and (min-width: 992px) {
+
+    #navbarToggler {
+      display: grid !important;
+      grid-template-columns: 20% 60% 20%;
+
+      .mainMenu {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        justify-content: center;
+      }
+    }
+
+    .userAndLogin {
+      justify-content: end;
+      margin-right: 10px;
+
+      .userMenu {
+        position: absolute;
+        width: 260px;
+        right: 0;
+        flex-direction: column;
+        background-color: variables.$navbar-bg-color;
+        z-index: 10;
+      }
+    }
+
+    .toggler {
+      display: none;
+    }
+
+    .home {
+      border: none !important;
+    }
+
+    a {
+
+      border: none !important;
+    }
+
+    .userName {
+      border: none !important;
+    }
+  }
+}

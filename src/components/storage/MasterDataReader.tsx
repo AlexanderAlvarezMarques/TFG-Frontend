@@ -2,7 +2,7 @@
 
 import {useDispatch, useSelector} from "react-redux";
 import MasterService from "@/services/api/master/MasterService";
-import {setMasterData} from "@/redux/reducers/masterDataReducers";
+import {clearMasterData, setMasterData} from "@/redux/reducers/masterDataReducers";
 import {setToken} from "@/redux/reducers/authorizationReducers";
 import React, {useEffect} from "react";
 import UserService from "@/services/api/user/UserService";
@@ -32,8 +32,8 @@ const MasterDataReader = () => {
             const refresh_token = localStorage.getItem('refresh_token');
 
             if (
-                !authData.token || !authData.refresh_token || !authData.isLogged &&
-                (token !== '' && refresh_token !== '')
+                (!authData.token || !authData.refresh_token || !authData.isLogged) &&
+                (token !== null && refresh_token !== null)
             ) {
                 dispatch(setToken({token: token, refresh_token: refresh_token}));
             }
