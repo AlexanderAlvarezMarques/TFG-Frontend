@@ -1,3 +1,9 @@
+@import "../mixin";
+
+table {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 .reserveDetails {
 
   width: 100%;
@@ -53,6 +59,16 @@
           background-color: darkred;
         }
       }
+    }
+  }
+
+  @include lg-screen {
+
+    max-width: 1400px;
+    justify-content: space-evenly;
+
+    section {
+      width: 40%;
     }
   }
 

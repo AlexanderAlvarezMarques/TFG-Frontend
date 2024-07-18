@@ -55,34 +55,36 @@ const LogInPage = () => {
     }
 
     return (
-        <form id="singIn" className="form" onSubmit={handleSubmit}>
-            <div className="formGroup">
-                <label htmlFor="username">Nombre de usuario o correo:</label>
-                <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Username"
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-            </div>
-            <div className="formGroup">
-                <label htmlFor="password">Contraseña:</label>
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="******"
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <div className={`formGroup`}>
-                <input type="submit" className={'btn btn-primary'} value="Log in"/>
-            </div>
-            <div className={`formGroup ${logInError ? 'd-block' : 'd-none'}`}>
-                <label>Nombre de usuario o contraseña erroneos</label>
-            </div>
-        </form>
+        <div className={`login`}>
+            <form id="singIn" className="form" onSubmit={handleSubmit}>
+                <div className="formGroup">
+                    <label htmlFor="username">Usuario/correo:</label>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Username"
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </div>
+                <div className="formGroup">
+                    <label htmlFor="password">Contraseña:</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="******"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <div className={`formGroup`}>
+                    <input type="submit" className={'btn btn-primary'} value="Log in"/>
+                </div>
+                <div className={`formGroup ${logInError ? 'd-block' : 'd-none'}`}>
+                    <label>Nombre de usuario o contraseña erroneos</label>
+                </div>
+            </form>
+        </div>
     );
 }
 

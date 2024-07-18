@@ -177,14 +177,16 @@ const SportCenterEditPage: React.FC<Params> = ({params: {id}}) => {
                     {/*    <input type="number" name="nCourts" id="nCourts" defaultValue={sportCenter.nCourts} disabled={true}/>*/}
                     {/*</div>*/}
 
-                    <div className={`formGroup`}>
+                    <div className={`formGroup button`}>
                         <input type="submit" value="Actualizar" className="btn btn-success"/>
                     </div>
-                </form>
 
-                <div className={`text-center mb-2`}>
-                    <button className={`btn btn-primary`} onClick={() => setIsCreateCourtOpen(!isCreateCourtOpen)}>Crear pista/cancha</button>
-                </div>
+                    <div className={'formGroup button'}>
+                        <button className={`btn btn-primary`}
+                                onClick={() => setIsCreateCourtOpen(!isCreateCourtOpen)}>Crear pista/cancha
+                        </button>
+                    </div>
+                </form>
 
                 {
                     isCreateCourtOpen && (
@@ -205,7 +207,7 @@ const SportCenterEditPage: React.FC<Params> = ({params: {id}}) => {
                                     <label>Número:</label>
                                     <input type="number" name="number" min={1}/>
                                 </div>
-                                <div className="formGroup">
+                                <div className="formGroup button">
                                     <input type="submit" className={`btn btn-success`} value="Crear"/>
                                 </div>
                             </form>

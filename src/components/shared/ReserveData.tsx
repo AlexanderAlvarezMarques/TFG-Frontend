@@ -113,7 +113,7 @@ const ReserveCard: React.FC<ReserveCardProps> = memo(({reserve, onChangeAction, 
                     </table>
                     <div className={`linkButtons`}>
                         <Link href={`/reserves/${reserve.id}`}>
-                            <button className="btn btn-primary">Details</button>
+                            <button className="btn btn-primary">Detalles</button>
                         </Link>
 
                         {
@@ -121,27 +121,19 @@ const ReserveCard: React.FC<ReserveCardProps> = memo(({reserve, onChangeAction, 
                                 <>
                                     {
                                         reserve.isOwner ? (
-                                            <>
-                                                <div className={`mt-1`}>
-                                                    <button className={`btn btn-danger`}
-                                                            onClick={deleteReserveAction}>Cancelar reserva
-                                                    </button>
-                                                </div>
-                                            </>
+                                            <button className={`btn btn-danger`}
+                                                    onClick={deleteReserveAction}>Cancelar
+                                            </button>
                                         ) : (
                                             <>
                                                 {reserve.isParticipant ? (
-                                                    <div className={`mt-1`}>
-                                                        <button className={`btn btn-danger`}
-                                                                onClick={cancelJoinAction}>Abandonar
-                                                        </button>
-                                                    </div>
+                                                    <button className={`btn btn-danger`}
+                                                            onClick={cancelJoinAction}>Abandonar
+                                                    </button>
                                                 ) : (
-                                                    <div className={`mt-1`}>
-                                                        <button className={`btn btn-success`}
-                                                                onClick={joinReserveAction}>Unirse
-                                                        </button>
-                                                    </div>
+                                                    <button className={`btn btn-success`}
+                                                            onClick={joinReserveAction}>Unirse
+                                                    </button>
                                                 )}
                                             </>
                                         )

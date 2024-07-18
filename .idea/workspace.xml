@@ -5,49 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e3f032d-8bdc-4232-b4fd-24060a0667aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/sass/partials/navbar.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/reservations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reservations/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/reserves/search/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/reserves/search/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/signup/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sport_centers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_centers/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/sport_facilities/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_facilities/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/sport_facilities/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_facilities/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/bootstrap/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/bootstrap/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/bootstrap/css/bootstrap-utilities.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/bootstrap/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/bootstrap/css/bootstrap.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/bootstrap/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/bootstrap/js/bootstrap.esm.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/bootstrap/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/_modals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/_modals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sass/_cards.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/_cards.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/sass/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/components/Modal/createReserve.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/components/Modal/createReserve.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/components/SearchBar/searchBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/components/SearchBar/searchBar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/components/searchEngine.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/components/searchEngine.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/sass/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/globals.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/reservations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/reservations.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/profile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/profile.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/reserveDetails.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/reserveDetails.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/searchReserves.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/searchReserves.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/signup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/signup.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/sport_facilities.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/sport_facilities.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/partials/navbar.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CreateReserveModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CreateReserveModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/sport_facility.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/sport_facility.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/CreateSportCenterModal/CreateSportCenterModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CreateSportCenterModal/CreateSportCenterModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/shared/ReserveData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/ReserveData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/SearchBar/SearchReserves.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/SearchBar/SearchReserves.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/storage/MasterDataReader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/storage/MasterDataReader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/api/sportCenter/SportCenterApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/sportCenter/SportCenterApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/api/user/UserApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/user/UserApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/partials/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/partials/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api/sportCenter/SportCenterService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/sportCenter/SportCenterService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/api/user/UserService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/api/user/UserService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/user.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/user.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +150,7 @@
       <workItem from="1720686149256" duration="2705000" />
       <workItem from="1720860653811" duration="5006000" />
       <workItem from="1720914401857" duration="11077000" />
+      <workItem from="1721119012018" duration="7448000" />
     </task>
     <servers />
   </component>

@@ -1,13 +1,24 @@
+@import "../mixin";
 
 .sportFacilities {
 
   overflow-x: auto;
+
+  .createReserveButton {
+    margin: 10px 0 0 10px;
+  }
 
   table {
     width: 80%;
     margin: 10px auto;
 
     vertical-align: middle;
+  }
+
+  @include lg-screen {
+    .createReserveButton {
+      text-align: center;
+    }
   }
 
 }

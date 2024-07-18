@@ -42,7 +42,7 @@ const SportFacilitiesPage = () => {
     return (
         <div className={`sportFacilities`}>
 
-            <div className={`mt-2 mx-2`}><CreateSportCenterModal action={updateSportFacilitiesOnCreate} /></div>
+            <div className={`createReserveButton`}><CreateSportCenterModal action={updateSportFacilitiesOnCreate} /></div>
 
             <table className={`table table-bordered table-hover sportFacilities`}>
                 <thead className={`thead-dark`}>

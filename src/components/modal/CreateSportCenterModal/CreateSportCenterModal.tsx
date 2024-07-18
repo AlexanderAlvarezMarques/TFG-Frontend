@@ -10,6 +10,8 @@ import MasterDataReader from "@/components/storage/MasterDataReader";
 import MasterDataTools from "@/utils/MasterDataTools";
 import {setMasterData} from "@/redux/reducers/masterDataReducers";
 
+import "@/assets/sass/components/Modal/createSportCenterModal.scss";
+
 type CreateSportCenterProps = {
     action: Function
 }

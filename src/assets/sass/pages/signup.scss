@@ -1,6 +1,26 @@
-.form {
-  .formGroup {
-    width: 100%;
-    margin: 10px;
+@import"../mixin";
+
+.signUp {
+
+  margin: auto auto;
+  background-color: rgba(255, 255, 255, 0.8);
+
+  .form {
+    .formGroup {
+      width: 100%;
+      margin: 10px;
+    }
   }
+
+   @include md-screen {
+
+     width: 500px;
+     border-radius: 20px;
+
+     .form {
+       width: 90%;
+     }
+
+   }
+
 }

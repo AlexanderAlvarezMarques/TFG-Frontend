@@ -1,3 +1,6 @@
+@import "../mixin";
+
+
 .sportCenter {
   width: 100%;
 
@@ -9,4 +12,30 @@
 
 .courts {
   overflow-x: auto;
+}
+
+@include md-screen {
+  .form {
+    width: 400px;
+  }
+}
+
+@include lg-screen {
+
+  .form {
+    width: auto;
+    max-width: 1200px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    .formGroup {
+      width: 30%;
+    }
+  }
+
+  .button {
+    align-self: end;
+  }
+
 }

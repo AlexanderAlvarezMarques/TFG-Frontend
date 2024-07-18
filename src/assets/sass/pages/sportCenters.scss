@@ -1,0 +1,15 @@
+@import "../mixin";
+
+.sportCenters {
+  margin: auto auto;
+  width: 100%;
+
+  @include md-screen {
+    width: 80%;
+    max-width: 1300px;
+
+    table {
+      border: 1px
+    }
+  }
+}

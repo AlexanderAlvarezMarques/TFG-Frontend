@@ -36,46 +36,53 @@ const SignUpPage: React.FC = () => {
     }
 
     return (
-        <form className={`form`} onSubmit={createUserAction}>
-            <div className="formGroup">
-                <label>Nombre:</label>
-                <input type="text" name="name" id="name" required={true} onChange={(e) => setName(e.target.value)}/>
-            </div>
+        <div className={`signUp`}>
+            <form className={`form`} onSubmit={createUserAction}>
+                <div className="formGroup">
+                    <label>Nombre:</label>
+                    <input type="text" name="name" id="name" required={true} onChange={(e) => setName(e.target.value)}/>
+                </div>
 
-            <div className="formGroup">
-                <label>Apellidos:</label>
-                <input type="text" name="surname" id="surname" required={true} onChange={(e) => setSurname(e.target.value)}/>
-            </div>
+                <div className="formGroup">
+                    <label>Apellidos:</label>
+                    <input type="text" name="surname" id="surname" required={true}
+                           onChange={(e) => setSurname(e.target.value)}/>
+                </div>
 
-            <div className="formGroup">
-                <label>Email:</label>
-                <input type="email" name="email" id="email" required={true} onChange={(e) => setEmail(e.target.value)}/>
-            </div>
+                <div className="formGroup">
+                    <label>Email:</label>
+                    <input type="email" name="email" id="email" required={true}
+                           onChange={(e) => setEmail(e.target.value)}/>
+                </div>
 
-            <div className="formGroup">
-                <label>Nombre de usuario:</label>
-                <input type="text" name="username" id="username" required={true} onChange={(e) => setUsername(e.target.value)}/>
-            </div>
+                <div className="formGroup">
+                    <label>Nombre de usuario:</label>
+                    <input type="text" name="username" id="username" required={true}
+                           onChange={(e) => setUsername(e.target.value)}/>
+                </div>
 
-            <div className="formGroup">
-                <label>Contraseña:</label>
-                <input type="password" name="password" id="password" required={true} onChange={(e) => setPassword(e.target.value)}/>
-            </div>
+                <div className="formGroup">
+                    <label>Contraseña:</label>
+                    <input type="password" name="password" id="password" required={true}
+                           onChange={(e) => setPassword(e.target.value)}/>
+                </div>
 
-            <div className="formGroup">
-                <label>Repita la contraseña:</label>
-                <input type="password" name="password_2" id="password_2" required={true} onChange={(e) => setPassword_1(e.target.value)}/>
-            </div>
+                <div className="formGroup">
+                    <label>Repita la contraseña:</label>
+                    <input type="password" name="password_2" id="password_2" required={true}
+                           onChange={(e) => setPassword_1(e.target.value)}/>
+                </div>
 
-            <div className="formGroup">
-                <label>DNI/NIE/NIF:</label>
-                <input type="text" name="nif" id="nif" onChange={(e) => setNif(e.target.value)}/>
-            </div>
+                <div className="formGroup">
+                    <label>DNI/NIE/NIF:</label>
+                    <input type="text" name="nif" id="nif" onChange={(e) => setNif(e.target.value)}/>
+                </div>
 
-            <div className="formGroup">
-                <input type="submit" value="Aceptar" className="btn btn-success"/>
-            </div>
-        </form>
+                <div className="formGroup">
+                    <input type="submit" value="Aceptar" className="btn btn-success"/>
+                </div>
+            </form>
+        </div>
     )
 
 }

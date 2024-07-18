@@ -24,6 +24,10 @@ body {
   min-height: 100vh;
 
   font-size: $web-font-size;
+
+  background-image: url("/assets/images/web-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 a {
