@@ -6,23 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7e3f032d-8bdc-4232-b4fd-24060a0667aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/signup/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sport_centers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_centers/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sport_facilities/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_facilities/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sport_facilities/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sport_facilities/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/_cards.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/_cards.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/globals.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/login.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/profile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/profile.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/reserveDetails.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/reserveDetails.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/signup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/signup.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/sport_facilities.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/sport_facilities.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sass/pages/sport_facility.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sass/pages/sport_facility.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/CreateSportCenterModal/CreateSportCenterModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CreateSportCenterModal/CreateSportCenterModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/ReserveData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/ReserveData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CourtReservationModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CourtReservationModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CreateReserveModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CreateReserveModal/CreateReserveModal.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +136,7 @@
       <workItem from="1720860653811" duration="5006000" />
       <workItem from="1720914401857" duration="11077000" />
       <workItem from="1721119012018" duration="7448000" />
+      <workItem from="1721752800033" duration="667000" />
     </task>
     <servers />
   </component>

@@ -4,7 +4,6 @@ import Modal from "@/components/modal/Modal";
 import React, {FormEvent, useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import SportCenterService from "@/services/api/sportCenter/SportCenterService";
-import {useRouter} from "next/navigation";
 import DatePicker from "react-datepicker";
 
 import styles from "@/assets/sass/components/Modal/createReserve.module.scss"

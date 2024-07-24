@@ -5,6 +5,8 @@ import {format} from "date-fns";
 import ReserveService from "@/services/api/reserve/ReserveService";
 import HTTP_STATUS from "@/enum/HttpStatusEnum";
 
+import "@/assets/sass/components/Modal/createReserveFinalStep.scss";
+
 type Props = {
     onClose: () => void
     courtId: number;
