@@ -1,15 +1,12 @@
 @import "../../_mixin.scss";
 
-.form {
+.courtForm {
 
   width: 300px;
+  flex-direction: row;
 
   .formGroup {
     width: 100%;
     margin-top: 10px;
-  }
-
-  @include md-screen {
-      width: 300px !important;
   }
 }

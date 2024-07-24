@@ -46,7 +46,7 @@ const CourtReservationModal = ({onClose, courtId, courtNumber, date, hour, minut
 
     return showModal && (
         <Modal onClose={() => onCloseModal()}>
-            <form className={'form'} onSubmit={submitForm}>
+            <form className={'form courtForm'} onSubmit={submitForm}>
                 <div className={'formGroup'}>
                     <label>Cancha/Pista:</label>
                     <input type={'text'} value={courtNumber} disabled={true}/>

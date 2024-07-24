@@ -109,7 +109,7 @@ const SportCenterEditPage: React.FC<Params> = ({params: {id}}) => {
     return (
         <>
             <div className={`sportCenter`}>
-                <form className={`form`} onSubmit={updateSportFacility}>
+                <form className={`form sportFacilityForm`} onSubmit={updateSportFacility}>
 
                     {/* Name */}
                     <div className="formGroup">
